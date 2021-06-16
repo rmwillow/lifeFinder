@@ -1,0 +1,28 @@
+/* start body */
+/* end body */
+
+/* start header */
+/* end header */
+
+/* start form */
+/* end form */
+
+/* start results container */
+.results {
+    margin: 1rem ;
+    padding:2rem 3rem ;
+    background-color: rgb(165, 165, 165);
+}
+
+.container {
+    display: flex;
+}
+/* end results container */
+
+/* start footer */
+.fixed-bottom {
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+}
+/* end footer */

@@ -1,12 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>citizenGuard</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+      integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Life Finder to go</title>
+  </head>
+
+  <body>
+    <!-- Start header -->
+    <header
+      class="title-bar"
+      data-responsive-toggle="responsive-menu"
+      data-hide-for="medium"
+    >
+      <div class="title-bar-title">lifeFinder - You type it - We find it!</div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Start main -->
+    <main class="grid-container">
+      <!-- Start search form -->
+      <form>
+        <div class="grid-container">
+          <div class="grid-x grid-padding-x">
+            <div class="small-4 cell">
+              <label class="menu form-label"
+                >What are we looking for?
+                <ul class="menu">
+                  <li><input type="search" placeholder="Search" /></li>
+                  <li><button type="button" class="button">Search</button></li>
+                </ul>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- End search form -->
+
+      <!-- Start results container -->
+      <div class="results card">
+        <!-- results title -->
+        <h3 class="card-divider">Here is what we came up with</h3>
+        <!-- results container -->
+        <div class="container">
+          <!-- each result in a card -->
+          <div class="card" style="width: 1000px">
+
+            <!-- <img src=""> -->
+            
+<!-- embedded zillow search box. -->
+<div id="zillow-large-search-box-widget-container" style="width:432px;overflow:hidden;background-color:#e7f1fd;color:#555; font: normal normal normal 13px verdana,arial,sans-serif;line-height:13px;margin:0 auto;padding:0;text-align:center;border:1px solid #adcfff;letter-spacing:0;text-transform:none;"><h2 style="color:#d61;text-align:left;font-size:20px;line-height:20px;font-weight:normal;float:left;width:200px;margin-left:10px;margin-top:5px;letter-spacing:0;text-transform:none;">Find Homes</h2><div style="float:right;"><a href="https://www.zillow.com/" target="_blank" rel="nofollow"><img alt="Zillow Real Estate Information" style="border:0;" src="https://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/images/powered-by-zillow.gif"></img></a></div><iframe scrolling="no" src="https://www.zillow.com/widgets/search/LargeSearchBoxWidget.htm?did=zillow-large-search-box-iframe-widget&type=iframe&rgname=Seattle+WA&shvi=yes" width="430" frameborder="0" height="400"></iframe><table id="zillow-tnc-widget-footer-links" width="100%" style="font: normal normal normal 10px verdana,arial,sans-serif;text-align:left;line-height:12px;margin:10px 5px;padding:0;border-spacing:0;border-collapse:collapse;"><tbody style="margin:0;padding:0;"><tr style="margin:0;padding:0;"><td style="font-weight:bold;font-size:10px;color:#555;text-align:left;margin:0;padding:0;">QUICK LINKS:</td></tr><tr style="margin:0;padding:0;"><td style="margin:0;padding:0;"><span id="widgetFooterLink" class="regionBasedLink"><a href="https://www.zillow.com/seattle-wa/" target="_blank" rel="nofollow" style="color:#36b;font-family:verdana,arial,sans-serif;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;"><span class="region">Seattle</span> Real Estate Listing</a></span></td><td style="margin:0;padding:0;"><span id="widgetFooterLink"><a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow" style="color:#36b;font-family:verdana,arial,sans-serif;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;">Mortgage Rates</a></span></td><td style="margin:0;padding:0;"><span id="widgetFooterLink"><a href="https://www.zillow.com/refinance/" target="_blank" rel="nofollow" style="color:#36b;font-family:verdana,arial,sans-serif;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;">Refinancing</a></span></td></tr><tr style="margin:0;padding:0;"><td style="margin:0;padding:0;"><span id="widgetFooterLink" class="regionBasedLink"><a href="https://www.zillow.com/seattle-wa/foreclosures/" target="_blank" rel="nofollow" style="color:#36b;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;"><span class="region">Seattle</span> Foreclosures</a></span></td><td style="margin:0;padding:0;"><span id="widgetFooterLink"><a href="https://www.zillow.com/mortgage-calculator/" target="_blank" rel="nofollow" style="color:#36b;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;">Mortgage Calculators</a></span></td><td style="margin:0;padding:0;"><span id="widgetFooterLink"><a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow" style="color:#36b;font-size:10px;margin:0 5px 0 0;padding:0;text-decoration:none;">Purchase Loans</a></span></td></tr></tbody></table></div>
+
+          </div>
+
+          <!-- each result in a card -->
+          <div class="card" style="width: 300px">
+            <div class="card-divider">Within 10 miles</div>
+            <div class="card-section">
+              <h4>This is a card.</h4>
+              <ul>
+                <li>List of searched</li>
+                <li>Activities within</li>
+                <li>10 miles goes here</li>
+                <li>with links to activity</li>
+              </ul>
+            </div>
+          </div>
+          <!-- each result in a card -->
+          <div class="card" style="width: 300px">
+            <div class="card-divider">Within 30 miles</div>
+            <div class="card-section">
+              <h4>This is a card.</h4>
+              <ul>
+                <li>List of searched</li>
+                <li>Activities within</li>
+                <li>30 miles goes here</li>
+                <li>with links to activity</li>
+              </ul>
+            </div>
+          </div>
+          <!-- each result in a card -->
+          <div class="card" style="width: 300px">
+            <div class="card-divider">Within 50 miles</div>
+            <div class="card-section">
+              <h4>This is a card.</h4>
+              <ul>
+                <li>List of searched</li>
+                <li>Activities within</li>
+                <li>50 miles goes here</li>
+                <li>with links to activity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End results container -->
+    </main>
+    <!-- End main -->
+
+    <!-- Start footer -->
+    <footer
+      class="fixed-bottom title-bar"
+      data-responsive-toggle="responsive-menu"
+      data-hide-for="medium"
+    >
+      Here will be some footer info
+    </footer>
+    <!-- End footer -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+      integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
