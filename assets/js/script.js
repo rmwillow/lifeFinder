@@ -1,17 +1,3 @@
-// function getUserInput() {
-//     var clickSearch = document.getElementById("button");
-
-
-//     clickSearch.addEventListener("click",
-//         document.getElementById("searchHomes").value
-//     );
-//     console.log(clickSearch);
-
-// }
-
-// getUserInput();
-
-
 document.getElementById("searchSubmit").onclick = function() { myFunction() };
 
 function myFunction() {
@@ -20,6 +6,7 @@ function myFunction() {
 }
 
 //api call functions
+
 //zillow api
 
 
