@@ -26,13 +26,14 @@
             <div class="grid-container">
                 <div class="grid-x grid-padding-x">
                     <div class="small-4 cell">
-                        <label class="menu form-label">What are we looking for?
+                        <label class="menu form-label">What are we looking for?  
+
                             <div class="row">
                                 <!-- search form -->
-                                <ul class="menu">
-                                    <li><input type="search" placeholder="Search" /></li>
-                                    <li><button type="button" class="button">Search</button></li>
-                                </ul>
+                               <ul class="menu" >
+                                <li><input type="text" placeholder="Search" id="searchHomes"/></li>
+                                <li><button type="button" class="button" id="searchSubmit">Search</button></li>
+                            </ul>
                                 <!-- dropdown menu -->
                                 <label for="POI">Choose a Point of Interest:</label>
                                 <select name="poi" id="POI" class="dropdown button cell">
@@ -44,6 +45,7 @@
                                     <option value="gas">Gas</option>
                                 </select>
                             </div>
+
                         </label>
                     </div>
                 </div>
