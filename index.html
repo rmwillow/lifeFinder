@@ -31,7 +31,7 @@
             <!-- navbar-end aligns elements to the right -->
             <div class="navbar-end">
                 <div class="navbar-item">
-                    Some text if needed
+                    Find life's essentials
                 </div>
             </div>
         </div>
@@ -42,175 +42,52 @@
     <main>
         <!-- Start 2 sides page layout -->
         <div class="columns box">
-            <!-- left side Zillow -->
-            <div class="column block ">
-                <!--  Start embedded zillow search box. -->
-                <div id="zillow-large-search-box-widget-container">
-                    <h2> Find Homes</h2>
-                    <div style="float:right;">
-                        <a href="https://www.zillow.com/" target="_blank" rel="nofollow">
-                            <img alt="Zillow Real Estate Information" style="border:0;"
-                                src="https://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/images/powered-by-zillow.gif">
-                            </img>
-                        </a>
-                    </div>
 
-                    <iframe scrolling="no"
-                        src="https://www.zillow.com/widgets/search/LargeSearchBoxWidget.htm?did=zillow-large-search-box-iframe-widget&type=iframe&rgname=Austin+TX&shvi=yes"
-                        width="430" frameborder="0" height="400">
-                    </iframe>
-
-                    <table id="zillow-tnc-widget-footer-links" width="100%">
-                        <tbody style="margin:0;padding:0;">
-                            <tr style="margin:0;padding:0;">
-                                <td
-                                    style="font-weight:bold;font-size:10px;color:#555;text-align:left;margin:0;padding:0;">
-                                    QUICK LINKS:
-                                </td>
-                            </tr>
-
-                            <tr style="margin:0;padding:0;">
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink" class="regionBasedLink">
-                                        <a href="https://www.zillow.com/seattle-wa/" target="_blank" rel="nofollow">
-                                            <span class="region"></span> Real Estate Listing
-                                        </a>
-                                    </span>
-                                </td>
-
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink">
-                                        <a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow">
-                                            Mortgage Rates
-                                        </a>
-                                    </span>
-                                </td>
-
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink">
-                                        <a href="https://www.zillow.com/refinance/" target="_blank" rel="nofollow">
-                                            Refinancing
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr style="margin:0;padding:0;">
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink" class="regionBasedLink">
-                                        <a href="https://www.zillow.com/seattle-wa/foreclosures/" target="_blank"
-                                            rel="nofollow">
-                                            <span class="region"></span> Foreclosures
-                                        </a>
-                                    </span>
-                                </td>
-
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink">
-                                        <a href="https://www.zillow.com/mortgage-calculator/" target="_blank"
-                                            rel="nofollow">
-                                            Mortgage Calculators
-                                        </a>
-                                    </span>
-                                </td>
-
-                                <td style="margin:0;padding:0;">
-                                    <span id="widgetFooterLink">
-                                        <a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow">
-                                            Purchase Loans
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- End embedded zillow search box. -->
-            </div>
             <!-- right side search with options -->
             <div class="column block ">
                 <article class="panel is-info">
                     <p class="panel-heading">
-                        What are We looking for?
-                    </p>
-                    <p class="panel-tabs">
-                        <a class="is-active">All</a>
-                        <a href="">Food</a>
-                        <a href="">Grocery</a>
-                        <a href="">School</a>
-                        <a href="">Recreation</a>
-                        <a href="">Gas</a>
+                        Where are you looking?
                     </p>
                     <div class="panel-block field has addons">
                         <div class="control has-icons-left">
-                            <input class="input is-info" type="text" placeholder="Search">
+                            <input class="input is-info" type="text" placeholder="Enter address">
                             <span class="icon is-left">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </span>
                         </div>
                         <button class="button is-info" id="search">Search</button>
                     </div>
-                    <a class="panel-block is-active">
-                        <span class="panel-icon">
-                            <i class="fas fa-book" aria-hidden="true"></i>
-                        </span>
-                        StarBucks
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                            <i class="fas fa-book" aria-hidden="true"></i>
-                        </span>
-                        HEB
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                            <i class="fas fa-book" aria-hidden="true"></i>
-                        </span>
-                        Austin Elementary
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                            <i class="fas fa-book" aria-hidden="true"></i>
-                        </span>
-                        Exxon
-                    </a>
-                </article>
+
+                    <p class="panel-tabs">
+
+                        <button class="button is-link">Saved Address 1</button>
+                        <button class="button is-link">Saved Address 2</button>
+                        <button class="button is-link">Saved Address 3</button>
+    
+                    </p>
+
+
+                    </article>
+            </div>
+            <div class="column block ">
+                <article class="panel is-primary">
+                <p class="panel-heading">
+                    What are you looking for?
+                </p>
+
+                <p class="panel-tabs">
+
+                    <button class="button is-primary">Groceries</button>
+                    <button class="button is-primary">Schools</button>
+                    <button class="button is-primary">Hospitals</button>
+
+                </p>
+
+</article>
             </div>
         </div>
         <!-- End 2 sides page layout -->
-
-        <!-- Start search form -->
-        <div class="field box">
-            <label class="label">What are We looking for?</label>
-            <div class="field is-grouped">
-                <!-- search field -->
-                <div class="control is-expanded">
-                    <input class="input" type="text" placeholder="Text input">
-                </div>
-                <!-- dropdown select -->
-                <div class="control">
-                    <div class="select">
-                        <select name="poi" id="POI" class="dropdown button cell">
-                            <option value="" selected disabled hidden>Choose PoI</option>
-                            <option value="food">Food</option>
-                            <option value="grocery"></option>
-                            <option value="school"></option>
-                            <option value="recreation"></option>
-                            <option value="gas"></option>
-                        </select>
-                    </div>
-                </div>
-                <!-- search button -->
-                <div class="control">
-                    <a class="button is-info">
-                        Search
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- End search form -->
-
-
 
         <!-- Start results container -->
         <div class="box">
