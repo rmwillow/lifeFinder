@@ -5,22 +5,180 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" /> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Life Finder to go</title>
 </head>
 
 <body>
     <!-- Start header -->
-    <header class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-        <div class="title-bar-title">lifeFinder - You type it - We find it!</div>
+    <header class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <!-- navbar-brand is left-side and always visible -->
+        <div class="navbar-brand">
+            <!-- each element should be wrapped in a navbar-item class -->
+            <a href="" class="navbar-item"></a>
+        </div>
+        <!-- navbar-menu is the rest of the header -->
+        <div id="navbarBasicExample" class="navbar-menu">
+            <!-- navbar-start aligns elements on the left -->
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    <strong>lifeFinder</strong>
+                </a>
+            </div>
+            <!-- navbar-end aligns elements to the right -->
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    Some text if needed
+                </div>
+            </div>
+        </div>
     </header>
     <!-- End Header -->
 
     <!-- Start main -->
-    <main class="grid-container">
+    <main>
+        <!-- Start 2 sides page layout -->
+        <div class="columns box">
+            <!-- left side Zillow -->
+            <div class="column block ">
+                <!--  Start embedded zillow search box. -->
+                <div id="zillow-large-search-box-widget-container">
+                    <h2> Find Homes</h2>
+                    <div style="float:right;">
+                        <a href="https://www.zillow.com/" target="_blank" rel="nofollow">
+                            <img alt="Zillow Real Estate Information" style="border:0;"
+                                src="https://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/images/powered-by-zillow.gif">
+                            </img>
+                        </a>
+                    </div>
+
+                    <iframe scrolling="no"
+                        src="https://www.zillow.com/widgets/search/LargeSearchBoxWidget.htm?did=zillow-large-search-box-iframe-widget&type=iframe&rgname=Austin+TX&shvi=yes"
+                        width="430" frameborder="0" height="400">
+                    </iframe>
+
+                    <!-- <table id="zillow-tnc-widget-footer-links" width="100%">
+                        <tbody style="margin:0;padding:0;">
+                            <tr style="margin:0;padding:0;">
+                                <td
+                                    style="font-weight:bold;font-size:10px;color:#555;text-align:left;margin:0;padding:0;">
+                                    QUICK LINKS:
+                                </td>
+                            </tr>
+
+                            <tr style="margin:0;padding:0;">
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink" class="regionBasedLink">
+                                        <a href="https://www.zillow.com/seattle-wa/" target="_blank" rel="nofollow">
+                                            <span class="region"></span> Real Estate Listing
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink">
+                                        <a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow">
+                                            Mortgage Rates
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink">
+                                        <a href="https://www.zillow.com/refinance/" target="_blank" rel="nofollow">
+                                            Refinancing
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr style="margin:0;padding:0;">
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink" class="regionBasedLink">
+                                        <a href="https://www.zillow.com/seattle-wa/foreclosures/" target="_blank"
+                                            rel="nofollow">
+                                            <span class="region"></span> Foreclosures
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink">
+                                        <a href="https://www.zillow.com/mortgage-calculator/" target="_blank"
+                                            rel="nofollow">
+                                            Mortgage Calculators
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td style="margin:0;padding:0;">
+                                    <span id="widgetFooterLink">
+                                        <a href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="nofollow">
+                                            Purchase Loans
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </div>
+                <!-- End embedded zillow search box. -->
+            </div>
+            <!-- right side search with options -->
+            <div class="column block ">
+                <article class="panel is-info">
+                    <p class="panel-heading">
+                        What are We looking for?
+                    </p>
+                    <p class="panel-tabs">
+                        <a class="is-active">All</a>
+                        <a href="">Food</a>
+                        <a href="">Grocery</a>
+                        <a href="">School</a>
+                        <a href="">Recreation</a>
+                        <a href="">Gas</a>
+                    </p>
+                    <div class="panel-block field has addons">
+                        <div class="control has-icons-left">
+                            <input class="input is-info" type="text" placeholder="Search">
+                            <span class="icon is-left">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <button class="button is-info" id="search">Search</button>
+                    </div>
+                    <a class="panel-block is-active">
+                        <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </span>
+                        StarBucks
+                    </a>
+                    <a class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </span>
+                        HEB
+                    </a>
+                    <a class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </span>
+                        Austin Elementary
+                    </a>
+                    <a class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </span>
+                        Exxon
+                    </a>
+                </article>
+            </div>
+        </div>
+        <!-- End 2 sides page layout -->
+
         <!-- Start search form -->
         <form>
             <div class="grid-container">
@@ -49,141 +207,126 @@
                         </label>
                     </div>
                 </div>
+                <!-- search button -->
+                <div class="control">
+                    <a class="button is-info">
+                        Search
+                    </a>
+                </div>
             </div>
-        </form>
+        </div>
         <!-- End search form -->
 
+
+
         <!-- Start results container -->
-        <div class="results card">
-            <!-- results title -->
-            <h3 class="card-divider">Here is what we came up with</h3>
-            <!-- results container -->
-            <div class="container">
-                <!-- each result in a card -->
-                <div class="card" style="width: 1000px">
-
-                    <!-- <img src=""> -->
-
-                    <!--  Start embedded zillow search box. -->
-                    <div id="zillow-large-search-box-widget-container">
-                        <h2> Find Homes</h2>
-                        <div style="float:right;">
-                            <a href="https://www.zillow.com/" target="_blank" rel="nofollow">
-                                <img alt="Zillow Real Estate Information" style="border:0;" src="https://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/images/powered-by-zillow.gif">
-                                </img>
-                            </a>
-                        </div>
-
-                        <iframe scrolling="no" src="https://www.zillow.com/widgets/search/LargeSearchBoxWidget.htm?did=zillow-large-search-box-iframe-widget&type=iframe&rgname=Austin+TX&shvi=yes" width="430" frameborder="0" height="400">
-                        </iframe>
-
-                        <table id="zillow-tnc-widget-footer-links" width="100%">
-                            <tbody style="margin:0;padding:0;">
-                                <tr style="margin:0;padding:0;">
-                                    <td style="font-weight:bold;font-size:10px;color:#555;text-align:left;margin:0;padding:0;">
-                                        QUICK LINKS:
-                                    </td>
-                                </tr>
-
-                                <tr style="margin:0;padding:0;">
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink" class="regionBasedLink">
-                                            <a href="https://www.zillow.com/seattle-wa/" target="_blank" rel="nofollow">
-                                                <span class="region"></span> Real Estate Listing
-                                        </a>
-                                        </span>
-                                    </td>
-
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink">
-                                            <a href="https://www.zillow.com/mortgage-rates/" target="_blank"
-                                                rel="nofollow">
-                                                Mortgage Rates
-                                            </a>
-                                        </span>
-                                    </td>
-
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink">
-                                            <a href="https://www.zillow.com/refinance/" target="_blank" rel="nofollow">
-                                                Refinancing
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-
-                                <tr style="margin:0;padding:0;">
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink" class="regionBasedLink">
-                                            <a href="https://www.zillow.com/seattle-wa/foreclosures/" target="_blank"
-                                                rel="nofollow">
-                                                <span class="region"></span> Foreclosures
-                                        </a>
-                                        </span>
-                                    </td>
-
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink">
-                                            <a href="https://www.zillow.com/mortgage-calculator/" target="_blank"
-                                                rel="nofollow">
-                                                Mortgage Calculators
-                                            </a>
-                                        </span>
-                                    </td>
-
-                                    <td style="margin:0;padding:0;">
-                                        <span id="widgetFooterLink">
-                                            <a href="https://www.zillow.com/mortgage-rates/" target="_blank"
-                                                rel="nofollow">
-                                                Purchase Loans
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <div class="box">
+            <p class="title">Here is what we came up with</p>
+            <div class="columns is-multiline is-mobile">
+                <!-- Each result in its own card -->
+                <div class="card column is-half">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 1 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
                     </div>
-                    <!-- End embedded zillow search box. -->
-
-                </div>
-
-                <!-- each result in a card -->
-                <div class="card" style="width: 300px">
-                    <div class="card-divider">Within 10 miles</div>
-                    <div class="card-section">
-                        <h4>This is a card.</h4>
-                        <ul>
-                            <li>List of searched</li>
-                            <li>Activities within</li>
-                            <li>10 miles goes here</li>
-                            <li>with links to activity</li>
-                        </ul>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
                     </div>
                 </div>
-                <!-- each result in a card -->
-                <div class="card" style="width: 300px">
-                    <div class="card-divider">Within 30 miles</div>
-                    <div class="card-section">
-                        <h4>This is a card.</h4>
-                        <ul>
-                            <li>List of searched</li>
-                            <li>Activities within</li>
-                            <li>30 miles goes here</li>
-                            <li>with links to activity</li>
-                        </ul>
+                <!-- Each result in its own card -->
+                <div class="card column is-half">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 2 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
+                    </div>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
                     </div>
                 </div>
-                <!-- each result in a card -->
-                <div class="card" style="width: 300px">
-                    <div class="card-divider">Within 50 miles</div>
-                    <div class="card-section">
-                        <h4>This is a card.</h4>
-                        <ul>
-                            <li>List of searched</li>
-                            <li>Activities within</li>
-                            <li>50 miles goes here</li>
-                            <li>with links to activity</li>
-                        </ul>
+
+                <!-- Each result in its own card -->
+                <div class="card column is-half">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 3 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
+                    </div>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                    </div>
+                </div>
+
+                <!-- Each result in its own card -->
+                <div class="card column ">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 4 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
+                    </div>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                    </div>
+                </div>
+
+                <!-- Each result in its own card -->
+                <div class="card column">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 1 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
+                    </div>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                    </div>
+                </div>
+
+                <!-- Each result in its own card -->
+                <div class="card column">
+                    <!-- search option -->
+                    <div class="card-header-title is-centered">Option 1 results</div>
+                    <!-- map -->
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="" alt="map here">
+                        </figure>
+                    </div>
+                    <!-- list of places -->
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
                     </div>
                 </div>
             </div>
@@ -192,13 +335,29 @@
     </main>
     <!-- End main -->
 
+    <!-- Start modal -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <h2>Alert! Alert!</h2>
+            <!-- Any other Bulma elements you want -->
+            <button class="modal-close is-medium" aria-label="close"></button>
+
+        </div>
+    </div>
+    <!-- End modal -->
+
     <!-- Start footer -->
-    <footer class="fixed-bottom title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
-        Here will be some footer info
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>lifeFinder</strong> by TEAM 2.
+            </p>
+        </div>
     </footer>
     <!-- End footer -->
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script> -->
+
     <script src="./assets/js/script.js"></script>
 </body>
 

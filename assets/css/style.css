@@ -19,6 +19,7 @@
 /* start results container */
 
 /* Start zillow widget */
+
 #zillow-large-search-box-widget-container {
     width: 432px;
     overflow: hidden;
@@ -66,6 +67,7 @@
     padding: 0;
     text-decoration: none;
 }
+
 /* End zillow widget */
 
 .results {
@@ -79,6 +81,27 @@
 }
 
 /* end results container */
+
+/* Start modal */
+.modal-close {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background-color: black;
+}
+
+.modal-content {
+    display: flex;
+    background-color: rgb(161, 192, 238);
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid #3e8ed0;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+}
+/* End modal */
 
 /* start footer */
 
