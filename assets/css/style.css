@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-#map {
-    height: 500px;
-    width: 500px;
-  }
-
 /* start body */
 
 /* end body */
@@ -25,9 +20,14 @@
     margin: 10px 10px;
 }
 
-/* start results container */
+/* start map container */
 
-/* end results container */
+#map {
+    height: 500px;
+    width: 500px;
+}
+
+/* end map container */
 
 /* Start modal */
 
