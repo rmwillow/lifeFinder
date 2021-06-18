@@ -1,27 +1,27 @@
-// start sample modal
-
+// start Modals
+    // alert modal will replace any default alerts
 var alertModal = function () {
+    // select the page and disables the scroll by adding respective classes(from framework)
     var htmlEl = document.querySelector('html');
+    htmlEl.classList.add('is-clipped');
+// select modal div and render on page(styles are from framework)
     var modalEl = document.querySelector('#alert');
     modalEl.classList.add('is-active');
-    htmlEl.classList.add('is-clipped');
 };
-
+    // close modals by removing the respective classes
 var closeModalBtn = function () {
     var htmlEl = document.querySelector('html');
+    htmlEl.classList.remove('is-clipped');
     var modalEl = document.querySelector('#alert');
     modalEl.classList.remove('is-active');
-    htmlEl.classList.remove('is-clipped');
-
 };
-
+// "close button" on modals will close them
 document.querySelector(".modal-close").addEventListener("click", closeModalBtn);
-document
-  .querySelector(".modal-background")
-  .addEventListener("click", closeModalBtn);
-// end sample modal
+// by clicking anywhere on page, mpdals will close aswell
+document.querySelector(".modal-background").addEventListener("click", closeModalBtn);
+// end Modals
 
-// start address autocomplete
+// start address autocomplete(this is copied from Google documentation, and simplified)
 var autocomplete;
 var searchEl = document.getElementById('autocomplete');
 
@@ -30,12 +30,12 @@ function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
     /** @type {!HTMLInputElement} */(searchEl),
         {
-            // options
+            // options(from google documentation)
             types: ['geocode'],
             componentRestrictions: { country: "us" }
         }
     );
-    // When the user selects an address from the dropdown, Call any function instead of Modal, this is for testing purposes;
+    // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
 };
 // end address auto complete
