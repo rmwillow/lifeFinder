@@ -1,3 +1,4 @@
+
 // start sample modal
 var sampleModal = function() {
     var htmlEl = document.querySelector('html');
@@ -17,6 +18,7 @@ document.getElementById('search').addEventListener('click',sampleModal);
 document.querySelector('.modal-close').addEventListener('click', closeModalBtn);
 document.querySelector('.modal-background').addEventListener('click', closeModalBtn);
 // end sample modal
+
 
 
 // fetch IP of user
@@ -44,6 +46,9 @@ document.querySelector('.modal-background').addEventListener('click', closeModal
         })
     })
 
+
+
+
 document.getElementById("searchSubmit").onclick = function() { myFunction() };
 
 function myFunction() {
@@ -60,4 +65,3 @@ function myFunction() {
 //google places api
 
 //google maps api
-
