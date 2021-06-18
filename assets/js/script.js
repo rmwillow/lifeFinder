@@ -1,16 +1,18 @@
 // start sample modal
-var sampleModal = function () {
-  var htmlEl = document.querySelector("html");
-  var modalEl = document.querySelector(".modal");
-  modalEl.classList.add("is-active");
-  htmlEl.classList.add("is-clipped");
+
+var alertModal = function () {
+    var htmlEl = document.querySelector('html');
+    var modalEl = document.querySelector('#alert');
+    modalEl.classList.add('is-active');
+    htmlEl.classList.add('is-clipped');
 };
 
 var closeModalBtn = function () {
-  var htmlEl = document.querySelector("html");
-  var modalEl = document.querySelector(".modal");
-  modalEl.classList.remove("is-active");
-  htmlEl.classList.remove("is-clipped");
+    var htmlEl = document.querySelector('html');
+    var modalEl = document.querySelector('#alert');
+    modalEl.classList.remove('is-active');
+    htmlEl.classList.remove('is-clipped');
+
 };
 
 document.querySelector(".modal-close").addEventListener("click", closeModalBtn);
@@ -19,6 +21,25 @@ document
   .addEventListener("click", closeModalBtn);
 // end sample modal
 
+// start address autocomplete
+var autocomplete;
+var searchEl = document.getElementById('autocomplete');
+
+function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical location types.
+    autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(searchEl),
+        {
+            // options
+            types: ['geocode'],
+            componentRestrictions: { country: "us" }
+        }
+    );
+    // When the user selects an address from the dropdown, Call any function instead of Modal, this is for testing purposes;
+    // autocomplete.addListener('place_changed', sampleModal); 
+};
+// end address auto complete
+
 // fetch IP of user
 var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
 var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
@@ -26,6 +47,7 @@ fetch(IPapi)
   .then((r) => r.json())
   .then((d) => console.log(d.latitude, d.longitude));
 // end of IP of user fetch
+
 
 //api call functions
 
@@ -39,6 +61,7 @@ schoolsEl.addEventListener("click", () => {
   searchWord = "school";
   initMap();
 });
+
 
 // variables for lat and longitude from user entered address will replace the numbers below
 let userInputLat = 30.2672;
@@ -114,4 +137,4 @@ function addPlaces(places, map) {
   }
 }
 
-// end of google places api function
+
