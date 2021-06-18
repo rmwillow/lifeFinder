@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+#map {
+    height: 500px;
+    width: 500px;
+  }
+
 /* start body */
 
 /* end body */
