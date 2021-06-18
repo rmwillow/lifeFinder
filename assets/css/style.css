@@ -16,6 +16,10 @@
 
 /* end form */
 
+
+.button {
+    margin: 10px 10px;
+
 /* start results container */
 
 /* Start zillow widget */
@@ -33,21 +37,15 @@
     border: 1px solid #adcfff;
     letter-spacing: 0;
     text-transform: none;
+
 }
 
-#zillow-large-search-box-widget-container h2 {
-    color: #d61;
-    text-align: left;
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: normal;
-    float: left;
-    width: 200px;
-    margin-left: 10px;
-    margin-top: 5px;
-    letter-spacing: 0;
-    text-transform: none;
+.is-link {
+    margin-top: 0;
 }
+
+
+/* start results container */
 
 #zillow-tnc-widget-footer-links {
     font: normal normal normal 10px verdana, arial, sans-serif;
@@ -69,6 +67,7 @@
 }
 
 /* End zillow widget */
+
 
 .results {
     margin: 1rem;
