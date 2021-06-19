@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Life Finder to go</title>
@@ -45,11 +44,16 @@
             <div class="column is-full box">
                 <article class="panel is-info" id="list-container">
                     <p class="panel-heading">What are We looking for?</p>
+
+
                     <p class="panel-tabs">
+                        <button id="allID" class="button is-info is-outlined">All</button>
+                        <button id="schoolID" class="button is-info is-outlined">School</button>
+                        <button id="groceryID" class="button is-info is-outlined">Grocery</button>
+                        <button id="hospitalID" class="button is-info is-outlined">Hospitals</button>
+                        <button id="churchID" class="button is-info is-outlined">Churches</button>
 
-
-                        <button class="button" id="schools">Schools</button>
-
+                    </p>
 
                     </p>
                     <div class="panel-block field has addons">
@@ -113,9 +117,7 @@
     <!-- End footer -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&callback=initMap&libraries=places&v=weekly&map_ids=8d193001f940fde3"
-        async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&callback=initMap&libraries=places&v=weekly&map_ids=8d193001f940fde3" async></script>
     <script src="./assets/js/script.js"></script>
 
 </body>
