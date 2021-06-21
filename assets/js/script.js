@@ -61,6 +61,8 @@ document.getElementById("hospitalID").onclick = function() { getHospitals() };
 function searchBar() {
     //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
+    //searchWord willl contain lat and long?
+    // searchWord = ""
     initMap();
 }
 
@@ -108,6 +110,7 @@ let userInputLng = -97.7431;
 let searchLat = userInputLat;
 let searchLng = userInputLng;
 
+
 function initMap() {
     // Create the map.
     const searchedLocation = { lat: searchLat, lng: searchLng };
@@ -128,6 +131,7 @@ function initMap() {
             getNextPage();
         }
     };
+
     // Perform a nearby search.
     service.nearbySearch({ location: searchedLocation, radius: 500, type: searchWord },
         (results, status, pagination) => {
