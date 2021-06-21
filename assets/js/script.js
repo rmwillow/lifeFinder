@@ -66,6 +66,7 @@ document.getElementById("hospitalID").onclick = function() { getHospitals() };
 
 function searchBar() {
     //this is where chris code call from the api lat long will go to call google maps
+    document.getElementById("places-list").innerHTML = "";
     initMap();
 }
 
@@ -74,12 +75,14 @@ function searchBar() {
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
     //document.getElementById("allID").innerHTML = "YOU CLICKED ME!";
+    document.getElementById("places-list").innerHTML = "";
     initMap();
 }
 
 //function to run user button click data into variables and displays on page in a list
 function getGroceries() {
     //document.getElementById("groceryID").innerHTML = "YOU CLICKED ME!";
+    document.getElementById("places-list").innerHTML = "";
     searchWord = "grocery";
     initMap();
 }
@@ -87,17 +90,20 @@ function getGroceries() {
 //function to run user button click data into variables and displays on page for groceries in a list
 function getChurches() {
     //document.getElementById("churchID").innerHTML = "YOU CLICKED ME!";
+    document.getElementById("places-list").innerHTML = "";
     searchWord = "church";
     initMap();
 }
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
     //document.getElementById("schoolID").innerHTML = "YOU CLICKED ME!";
+    document.getElementById("places-list").innerHTML = "";
     searchWord = "school";
     initMap();
 }
 //function to run user button click data into variables and displays on page for hospitals in a list
 function getHospitals() {
+    document.getElementById("places-list").innerHTML = "";
     searchWord = "hospital";
     // document.getElementById("hospitalID").innerHTML = "YOU CLICKED ME!";
     initMap();
@@ -151,7 +157,7 @@ function initMap() {
 
 function addPlaces(places, map) {
     const placesList = document.getElementById("list-container");
-
+    const placesDisplay = document.getElementById("places-list");
     for (const place of places) {
         if (place.geometry && place.geometry.location) {
             const image = {
@@ -170,7 +176,7 @@ function addPlaces(places, map) {
             const li = document.createElement("div");
             li.classList = "panel-block is-active";
             li.textContent = place.name;
-            placesList.appendChild(li);
+            placesDisplay.appendChild(li);
             li.addEventListener("click", () => {
                 map.setCenter(place.geometry.location);
             });
