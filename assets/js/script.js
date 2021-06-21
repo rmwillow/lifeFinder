@@ -74,7 +74,7 @@ function searchBar() {
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
-    //document.getElementById("allID").innerHTML = "YOU CLICKED ME!";
+    searchWord = ""
     document.getElementById("places-list").innerHTML = "";
     initMap();
 }
