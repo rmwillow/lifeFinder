@@ -37,7 +37,7 @@ function initAutocomplete() {
     );
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
-    initAutocomplete();
+
 };
 // end address auto complete
 
@@ -96,6 +96,10 @@ function getHospitals() {
     searchWord = "hospital";
     initMap();
 }
+
+
+// api lat long cenvter goes here
+//save those converted lat and long to variables below 
 
 // variables for lat and longitude from user entered address will replace the numbers below
 let userInputLat = 30.2672;
