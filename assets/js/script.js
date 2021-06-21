@@ -37,6 +37,7 @@ function initAutocomplete() {
     );
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
+    initAutocomplete();
 };
 // end address auto complete
 

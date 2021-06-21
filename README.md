@@ -1,6 +1,4 @@
-# Theo Oiouranioi Weekly Weather
-
-
+# Life Finder
 
 
 > **Purpose**: A website that displays top necessities near a location you entered. Moving to a new area? No worries we got you covered on better knowing the area!
@@ -8,8 +6,6 @@
 <br />
 
 ![Life Finder to go](https://user-images.githubusercontent.com/52016382/122820942-d3ce1c80-d2a1-11eb-8731-466b83100dff.gif)
-
-
 
 
 ______________________________________________________________________
@@ -42,6 +38,14 @@ ___________________________________
 
 
 ## Contribution
-Made by Rachel McGrath
+Made by 
+* Rachel McGrath
+* IrynaShulim
+* Joshsands
+* Vitokwolf
+* john-tech30
+* crtijerina
+
+
 
 ### ©️2021 
