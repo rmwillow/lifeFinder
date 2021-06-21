@@ -48,14 +48,7 @@ fetch(IPapi)
     .then((d) => console.log(d.latitude, d.longitude));
 // end of IP of user fetch
 
-
-//api call functions
-
-
-//google places api START
-
 //button click and button data storage
-//********iryana use these variables and append to list for each function and append to the page in correct section 
 //getting elements name
 document.getElementById("search").onclick = function() { searchBar() };
 document.getElementById("allID").onclick = function() { getAll() };
@@ -70,8 +63,6 @@ function searchBar() {
     initMap();
 }
 
-
-
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
     searchWord = ""
@@ -81,7 +72,6 @@ function getAll() {
 
 //function to run user button click data into variables and displays on page in a list
 function getGroceries() {
-    //document.getElementById("groceryID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "grocery";
     initMap();
@@ -89,14 +79,12 @@ function getGroceries() {
 
 //function to run user button click data into variables and displays on page for groceries in a list
 function getChurches() {
-    //document.getElementById("churchID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "church";
     initMap();
 }
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
-    //document.getElementById("schoolID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "school";
     initMap();
@@ -105,11 +93,8 @@ function getSchools() {
 function getHospitals() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "hospital";
-    // document.getElementById("hospitalID").innerHTML = "YOU CLICKED ME!";
     initMap();
-
 }
-
 
 // variables for lat and longitude from user entered address will replace the numbers below
 let userInputLat = 30.2672;
