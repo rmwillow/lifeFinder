@@ -9,22 +9,18 @@
 
 
 ______________________________________________________________________
-#### The web site holds previous cities you searched.
-< ...screenshot of local storage here....>
+> **The web site holds previous cities you searched.**
+
+<br />
+
+![local storage on chrome ](https://user-images.githubusercontent.com/52016382/122845283-f58eca00-d2c8-11eb-8464-65e3a5445580.jpg)
 
 
 <br />
 <br />
- ________________________________________________
-___________________________________
-<br />
-
-<br />
-
-> For more information visit the site clicking here:[Rachel McGraths Portfolio](https://rmwillow.github.io/portfolio/)
+ ____________________________________________________________________________
 
 <br/>
-
 
 
 ## Built With
