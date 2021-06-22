@@ -95,7 +95,7 @@ function getAll() {
 //function to run user button click data into variables and displays on page in a list
 function getGroceries() {
     document.getElementById("places-list").innerHTML = "";
-    searchWord = "grocery";
+    searchWord = "store";
     initMap();
 }
 
@@ -200,11 +200,18 @@ function addPlaces(places, map) {
                 title: place.name,
                 position: place.geometry.location,
             });
+            const itemContainer = document.createElement("div");
             const li = document.createElement("div");
+            const img = document.createElement("img");
+            img.setAttribute("src", place.icon)
+            itemContainer.classList = "panel-block button is-light is-large is-outlined";
             li.classList = "panel-block is-active";
             li.textContent = place.name;
-            placesDisplay.appendChild(li);
-            li.addEventListener("click", () => {
+            placesDisplay.appendChild(itemContainer);
+            itemContainer.appendChild(img);
+            itemContainer.appendChild(li);
+            
+            itemContainer.addEventListener("click", () => {
                 map.setCenter(place.geometry.location);
             });
         }
