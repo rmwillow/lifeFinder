@@ -35,6 +35,12 @@ function initAutocomplete() {
             componentRestrictions: { country: "us" }
         }
     );
+
+    // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
+    // autocomplete.addListener('place_changed', sampleModal); 
+
+
+
 };
 // end address auto complete
 
@@ -50,12 +56,13 @@ fetch(IPapi)
     });
 // end of IP of user fetch
 
+
+
 //api call functions
 
 //google places api START
 
 //button click and button data storage
-//********iryana use these variables and append to list for each function and append to the page in correct section 
 //getting elements name
 document.getElementById("search").onclick = function() { searchBar() };
 document.getElementById("allID").onclick = function() { getAll() };
@@ -70,19 +77,24 @@ function searchBar() {
     console.log(addressSearch);
     //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
+    //searchWord willl contain lat and long?
+    // searchWord = ""
     initMap();
+
+}
+
 };
+
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
-    //document.getElementById("allID").innerHTML = "YOU CLICKED ME!";
+    searchWord = ""
     document.getElementById("places-list").innerHTML = "";
     initMap();
 }
 
 //function to run user button click data into variables and displays on page in a list
 function getGroceries() {
-    //document.getElementById("groceryID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "grocery";
     initMap();
@@ -90,14 +102,12 @@ function getGroceries() {
 
 //function to run user button click data into variables and displays on page for groceries in a list
 function getChurches() {
-    //document.getElementById("churchID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "church";
     initMap();
 }
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
-    //document.getElementById("schoolID").innerHTML = "YOU CLICKED ME!";
     document.getElementById("places-list").innerHTML = "";
     searchWord = "school";
     initMap();
@@ -106,9 +116,15 @@ function getSchools() {
 function getHospitals() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "hospital";
-    // document.getElementById("hospitalID").innerHTML = "YOU CLICKED ME!";
     initMap();
 }
+
+
+
+// api lat long cenvter goes here
+//save those converted lat and long to variables below 
+
+
 
 // variables for lat and longitude from user entered address will replace the numbers below
 let userInputLat = 30.2672;
@@ -127,6 +143,7 @@ searchedLoc.push(searchLat, searchLng);
 
 //store list in local storage with the name of lat, long
 localStorage.setItem("lat, Long", searchedLoc);
+
 
 function initMap() {
     // Create the map.
@@ -148,6 +165,7 @@ function initMap() {
             getNextPage();
         }
     };
+
     // Perform a nearby search.
     service.nearbySearch({ location: searchedLocation, radius: 500, type: searchWord },
         (results, status, pagination) => {
