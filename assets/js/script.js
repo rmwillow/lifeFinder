@@ -83,7 +83,6 @@ function searchBar() {
 
 }
 
-};
 
 
 //function to run user button click data into variables and displays all options on page in a list
