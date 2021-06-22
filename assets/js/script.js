@@ -118,6 +118,17 @@ let userInputLng = -97.7431;
 let searchLat = userInputLat;
 let searchLng = userInputLng;
 
+// Store
+
+//create a list to store lat and long in
+let searchedLoc = [];
+
+//push lat and long variables into list
+searchedLoc.push(searchLat, searchLng);
+
+//store list in local storage with the name of lat, long
+localStorage.setItem("lat, Long", searchedLoc);
+
 function initMap() {
     // Create the map.
     const searchedLocation = { lat: searchLat, lng: searchLng };
