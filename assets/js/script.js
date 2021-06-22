@@ -1,6 +1,6 @@
 // start Modals
 // alert modal will replace any default alerts
-var alertModal = function() {
+var alertModal = function () {
     // select the page and disables the scroll by adding respective classes(from framework)
     var htmlEl = document.querySelector('html');
     htmlEl.classList.add('is-clipped');
@@ -9,7 +9,7 @@ var alertModal = function() {
     modalEl.classList.add('is-active');
 };
 // close modals by removing the respective classes
-var closeModalBtn = function() {
+var closeModalBtn = function () {
     var htmlEl = document.querySelector('html');
     htmlEl.classList.remove('is-clipped');
     var modalEl = document.querySelector('#alert');
@@ -30,10 +30,10 @@ function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
         (searchEl), {
-            // options(from google documentation)
-            types: ['geocode'],
-            componentRestrictions: { country: "us" }
-        }
+        // options(from google documentation)
+        types: ['geocode'],
+        componentRestrictions: { country: "us" }
+    }
     );
 
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
@@ -42,6 +42,7 @@ function initAutocomplete() {
 
 
 };
+
 // end address auto complete
 
 // fetch IP of user (first API for our app, identifies the users exact location by IP address)
@@ -64,12 +65,13 @@ fetch(IPapi)
 
 //button click and button data storage
 //getting elements name
-document.getElementById("search").onclick = function() { searchBar() };
-document.getElementById("allID").onclick = function() { getAll() };
-document.getElementById("groceryID").onclick = function() { getGroceries() };
-document.getElementById("churchID").onclick = function() { getChurches() };
-document.getElementById("schoolID").onclick = function() { getSchools() };
-document.getElementById("hospitalID").onclick = function() { getHospitals() };
+document.getElementById("search").onclick = function () { searchBar() };
+document.getElementById("allID").onclick = function () { getAll() };
+document.getElementById("groceryID").onclick = function () { getGroceries() };
+document.getElementById("churchID").onclick = function () { getChurches() };
+document.getElementById("schoolID").onclick = function () { getSchools() };
+document.getElementById("hospitalID").onclick = function () { getHospitals() };
+
 
 function searchBar() {
     // retrive the search bar value and store it into variable to be used by HERE API
@@ -79,9 +81,33 @@ function searchBar() {
     document.getElementById("places-list").innerHTML = "";
     //searchWord willl contain lat and long?
     // searchWord = ""
-    initMap();
+    // initMap();
 
 }
+
+function latLongApiConvert() {
+    var addressName = searchEl.value;
+
+    fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${addressName}&apiKey=bdqcjlmCmyait3HRaSan-DswcIzcFnXA6kF_lisyTHs`)
+        .then(response => response.json())
+        .then(data => console.log(data));
+}
+
+
+// // api lat long cenvter goes here
+// function latitudelongitudeconverter(addressSearch) {
+// fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${addressSearch}&apiKey=bdqcjlmCmyait3HRaSan-DswcIzcFnXA6kF_lisyTHs
+// `, {
+//     method: "GET", headers: { Accept: "application/json" }
+// }).then(response => {
+//     response.json().then(json => {
+//     //    search1=json.items[0].position.lat
+//     //    search2=json.items[0].position.lng
+//     //     console.log(json.items[0].position)
+//     console.log(response)
+//     })
+// })}
+// console.log(response)
 
 
 
@@ -157,7 +183,7 @@ function initMap() {
     let getNextPage;
     const moreButton = document.getElementById("more");
 
-    moreButton.onclick = function() {
+    moreButton.onclick = function () {
         moreButton.disabled = true;
 
         if (getNextPage) {
@@ -210,7 +236,7 @@ function addPlaces(places, map) {
             placesDisplay.appendChild(itemContainer);
             itemContainer.appendChild(img);
             itemContainer.appendChild(li);
-            
+
             itemContainer.addEventListener("click", () => {
                 map.setCenter(place.geometry.location);
             });
