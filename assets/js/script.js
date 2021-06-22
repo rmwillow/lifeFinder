@@ -35,22 +35,22 @@ function initAutocomplete() {
             componentRestrictions: { country: "us" }
         }
     );
-    // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
-    // autocomplete.addListener('place_changed', sampleModal); 
 };
 // end address auto complete
 
-// fetch IP of user
+// fetch IP of user (first API for our app, identifies the users exact location by IP address)
 var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
 var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
 fetch(IPapi)
     .then((r) => r.json())
-    .then((d) => console.log(d.latitude, d.longitude));
+    .then((d) => {
+        // assign user's lat/long to variables to be used by Google Places
+        searchLat = d.latitude;
+        searchLng = d.longitude;
+    });
 // end of IP of user fetch
 
-
 //api call functions
-
 
 //google places api START
 
@@ -65,12 +65,13 @@ document.getElementById("schoolID").onclick = function() { getSchools() };
 document.getElementById("hospitalID").onclick = function() { getHospitals() };
 
 function searchBar() {
+    // retrive the search bar value and store it into variable to be used by HERE API
+    var addressSearch = searchEl.value;
+    console.log(addressSearch);
     //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
     initMap();
-}
-
-
+};
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
@@ -107,16 +108,14 @@ function getHospitals() {
     searchWord = "hospital";
     // document.getElementById("hospitalID").innerHTML = "YOU CLICKED ME!";
     initMap();
-
 }
-
 
 // variables for lat and longitude from user entered address will replace the numbers below
 let userInputLat = 30.2672;
 let userInputLng = -97.7431;
 
-let searchLat = userInputLat;
-let searchLng = userInputLng;
+var searchLat = userInputLat;
+var searchLng = userInputLng;
 
 // Store
 
