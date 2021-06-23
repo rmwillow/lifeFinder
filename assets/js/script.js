@@ -102,25 +102,29 @@ function searchBar() {
             .then(data => {
 
                 console.log(data);
-                let cityName = data.results[0].formatted_address;
+                let fullAddress = data.results[0].formatted_address;
+                console.log(fullAddress);
                 // Create a iterable that will select the <div> where the city will be displayed
-                let responseContainerEl = document.getElementById('buttonsContainer');
-                let cityBtn = document.createElement("BUTTON");
-                cityBtn.setAttribute('src', cityName);
-                cityBtn.textContent = cityName;
+                let responseContainerEl = document.getElementById('buttonsContainer')
+                let addressBtn = document.createElement("BUTTON");
+                addressBtn.setAttribute('src', fullAddress);
+                addressBtn.textContent = fullAddress;
 
                 //onclick city name will load data with no fetch request
-                cityBtn.onclick = function() {
+                addressBtn.onclick = function() {
                     //  get value of button
-                    let oldCityName = cityBtn.innerHTML;
-                    console.log(oldCityName);
+                    let prevAddress = addressBtn.innerHTML;
+                    console.log(prevAddress);
                     //call all dynamic data functions
-                    initialLocation();
-                    searchBar();
+                    // initialLocation();
+                    // searchBar();
                 };
-                cityBtn.className = "button is-info is-outlined"
-                    // Append to the button
-                responseContainerEl.appendChild(cityBtn);
+                addressBtn.className = "button is-info is-outlined is-medium is-fullwidth"
+                addressBtn.style = "margin: 10px; justify-content: center;"
+                console.log(addressBtn);
+                // Append to the button
+                //document.body.appendChild(addressBtn);
+                responseContainerEl.append(addressBtn);
             });
     }
     cityButtons();
