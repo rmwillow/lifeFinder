@@ -7,7 +7,6 @@ var alertModal = function() {
     // select modal div and render on page(styles are from framework)
     var modalEl = document.querySelector('#alert');
     modalEl.classList.add('is-active');
-
 };
 // close modals by removing the respective classes
 var closeModalBtn = function() {
@@ -124,14 +123,32 @@ function searchBar() {
                     console.log(prevAddress);
                     //call all dynamic data functions
                     // initialLocation();
-                    initMap();
+                    document.getElementById("places-list").innerHTML = "";
 
+                    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+                        .then(response => response.json())
+                        .then(data => {
+
+                            console.log(data);
+                            // var latInput = data.results[0].geometry.location.lng;
+                            // // var longInput = data.results[0].geometry.location.lng;
+                            // console.log(latInput);
+
+                            var userInputLat = data.results[0].geometry.location.lat;
+                            var userInputLng = data.results[0].geometry.location.lng;
+                            console.log(userInputLat, userInputLng);
+                            searchLat = userInputLat;
+                            searchLng = userInputLng;
+                            console.log(searchLat, searchLng)
+                            initMap()
+                        })
                 };
 
             });
     }
     cityButtons();
 }
+
 
 //local storage 
 //create a list to store lat and long in
@@ -248,7 +265,6 @@ function addPlaces(places, map) {
             itemContainer.appendChild(img);
             itemContainer.appendChild(li);
             itemContainer.style = "margin: 10px; contain: content;"
-
 
             itemContainer.addEventListener("click", () => {
                 map.setCenter(place.geometry.location);
