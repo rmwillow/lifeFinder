@@ -1,24 +1,4 @@
-// Start global variables
-
-// autocomplete variables
-var autocomplete;
-var searchEl = document.getElementById('autocomplete');
-// google places variables
-var searchLat;
-var searchLng;
-var searchWord;
-
-//getting elements name
-var searchBtnEl = document.getElementById("search");
-var allIdEl = document.getElementById("allID");
-var groceryIdEl = document.getElementById("groceryID");
-var churchIdEl = document.getElementById("churchID");
-var schoolIdEl = document.getElementById("schoolID");
-var hospitalIdEl = document.getElementById("hospitalID");
-
-// End global variables
-
-// Start Modals
+// start Modals
 // alert modal will replace any default alerts
 var alertModal = function () {
     // select the page and disables the scroll by adding respective classes(from framework)
@@ -42,6 +22,9 @@ document.querySelector(".modal-background").addEventListener("click", closeModal
 // end Modals
 
 // start address autocomplete(this is copied from Google documentation, and simplified)
+var autocomplete;
+var searchEl = document.getElementById('autocomplete');
+
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical location types.
     autocomplete = new google.maps.places.Autocomplete(
@@ -50,42 +33,56 @@ function initAutocomplete() {
         // options(from google documentation)
         types: ['geocode'],
         componentRestrictions: { country: "us" }
-    })
+    }
+    );
+    // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
+    // autocomplete.addListener('place_changed', sampleModal); 
 };
-// end address auto complete
 
-// Start fetch user's IP (first API for our app, identifies the users exact location by IP address)
+// end address auto complete
 function initialLocation() {
+    // fetch IP of user (first API for our app, identifies the users exact location by IP address)
     var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
     var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
     fetch(IPapi)
         .then((r) => r.json())
         .then((d) => {
-            // assign user's lat/long to variables place them on the map
+            // assign user's lat/long to variables to be used by Google Places
             searchLat = d.latitude;
             searchLng = d.longitude;
             initMap()
         });
 }
 initialLocation();
-// End initial user's IP
 
-// Start searchBar functioanlity
+//button click and button data storage
+//getting elements name
+document.getElementById("search").onclick = function () { searchBar() };
+document.getElementById("allID").onclick = function () { getAll() };
+document.getElementById("groceryID").onclick = function () { getGroceries() };
+document.getElementById("churchID").onclick = function () { getChurches() };
+document.getElementById("schoolID").onclick = function () { getSchools() };
+document.getElementById("hospitalID").onclick = function () { getHospitals() };
+
+var searchLat;
+var searchLng;
+
 function searchBar() {
-    // retrive the search bar value and store it into variable to be used to find lat/lng
+    // retrive the search bar value and store it into variable to be used by HERE API
     var addressSearch = searchEl.value;
-    // clear the places list
+    console.log(addressSearch);
+    //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
-    // use search value to transform it into lat/lng
+
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
         .then(response => response.json())
         .then(data => {
-            // save lat/lng into variables
             var userInputLat = data.results[0].geometry.location.lat;
             var userInputLng = data.results[0].geometry.location.lng;
+            console.log(userInputLat, userInputLng);
             searchLat = userInputLat;
             searchLng = userInputLng;
-            // display the results
+            console.log(searchLat, searchLng);
             initMap()
         })
     console.log(searchLat, searchLng)
@@ -114,7 +111,7 @@ function searchBar() {
                 responseContainerEl.append(addressBtn);
 
                 //onclick city name will load data with no fetch request
-                addressBtn.onclick = function() {
+                addressBtn.onclick = function () {
                     //  get value of button
                     let prevAddress = addressBtn.innerHTML;
                     console.log(prevAddress);
@@ -145,8 +142,6 @@ function searchBar() {
     }
     cityButtons();
 }
-// End searchBar functioanlity
-
 
 
 //local storage 
@@ -166,14 +161,14 @@ function getAll() {
     initMap()
 };
 
-//function to run user button click data into variables and displays on page for groceries in a list
+//function to run user button click data into variables and displays on page in a list
 function getGroceries() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "store";
     initMap()
 };
 
-//function to run user button click data into variables and displays on page for churches in a list
+//function to run user button click data into variables and displays on page for groceries in a list
 function getChurches() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "church";
@@ -193,19 +188,21 @@ function getHospitals() {
     initMap()
 };
 
-// Start initialize the map
+var searchWord;
+
 function initMap() {
     // Create the map.
     const searchedLocation = { lat: searchLat, lng: searchLng };
     const map = new google.maps.Map(document.getElementById("map"), {
         center: searchedLocation,
-        zoom: 15,
+        zoom: 17,
         mapId: "8d193001f940fde3",
     });
     // Create the places service.
     const service = new google.maps.places.PlacesService(map);
     let getNextPage;
     const moreButton = document.getElementById("more");
+
     moreButton.onclick = function () {
         moreButton.disabled = true;
 
@@ -214,8 +211,10 @@ function initMap() {
         }
     };
 
+
+
     // Perform a nearby search.
-    service.nearbySearch({ location: searchedLocation, radius: 1500, type: searchWord },
+    service.nearbySearch({ location: searchedLocation, radius: 2000, type: searchWord },
         (results, status, pagination) => {
             if (status !== "OK" || !results) return;
             addPlaces(results, map);
@@ -230,10 +229,9 @@ function initMap() {
         }
     )
 };
-// End initialize the map
 
-// Start search places and create the list
 function addPlaces(places, map) {
+    const placesList = document.getElementById("list-container");
     const placesDisplay = document.getElementById("places-list");
     for (const place of places) {
         if (place.geometry && place.geometry.location) {
@@ -267,13 +265,5 @@ function addPlaces(places, map) {
             })
         }
     }
-};
-// End search places and create the list
-
-//button click and button data storage
-searchBtnEl.onclick = function () { searchBar() };
-allIdEl.onclick = function () { getAll() };
-groceryIdEl.onclick = function () { getGroceries() };
-churchIdEl.onclick = function () { getChurches() };
-schoolIdEl.onclick = function () { getSchools() };
-hospitalIdEl.onclick = function () { getHospitals() };
+}
+//city button function data
