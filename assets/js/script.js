@@ -35,32 +35,25 @@ function initAutocomplete() {
             componentRestrictions: { country: "us" }
         }
     );
-
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
-
-
-
 };
+
 // end address auto complete
-
-// fetch IP of user (first API for our app, identifies the users exact location by IP address)
-var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
-var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
-fetch(IPapi)
-    .then((r) => r.json())
-    .then((d) => {
-        // assign user's lat/long to variables to be used by Google Places
-        searchLat = d.latitude;
-        searchLng = d.longitude;
-    });
-// end of IP of user fetch
-
-
-
-//api call functions
-
-//google places api START
+function initialLocation() {
+    // fetch IP of user (first API for our app, identifies the users exact location by IP address)
+    var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
+    var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
+    fetch(IPapi)
+        .then((r) => r.json())
+        .then((d) => {
+            // assign user's lat/long to variables to be used by Google Places
+            searchLat = d.latitude;
+            searchLng = d.longitude;
+            initMap()
+        });
+}
+initialLocation();
 
 //button click and button data storage
 //getting elements name
@@ -71,23 +64,49 @@ document.getElementById("churchID").onclick = function() { getChurches() };
 document.getElementById("schoolID").onclick = function() { getSchools() };
 document.getElementById("hospitalID").onclick = function() { getHospitals() };
 
+var searchLat;
+var searchLng;
+
 function searchBar() {
     // retrive the search bar value and store it into variable to be used by HERE API
     var addressSearch = searchEl.value;
     console.log(addressSearch);
     //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
-    //searchWord willl contain lat and long?
-    // searchWord = ""
-    initMap();
 
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data);
+            // var latInput = data.results[0].geometry.location.lng;
+            // // var longInput = data.results[0].geometry.location.lng;
+            // console.log(latInput);
+
+            var userInputLat = data.results[0].geometry.location.lat;
+            var userInputLng = data.results[0].geometry.location.lng;
+            console.log(userInputLat, userInputLng);
+            searchLat = userInputLat;
+            searchLng = userInputLng;
+            console.log(searchLat, searchLng)
+            initMap()
+        })
+    console.log(searchLat, searchLng)
 }
 
+//local storage 
+//create a list to store lat and long in
+let searchedLoc = [];
 
+//push lat and long variables into list
+searchedLoc.push(searchLat, searchLng);
+
+//store list in local storage with the name of lat, long
+localStorage.setItem("lat, Long", searchedLoc);
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
-    searchWord = ""
+    searchWord = searchEl.value;
     document.getElementById("places-list").innerHTML = "";
     initMap();
 }
@@ -105,6 +124,7 @@ function getChurches() {
     searchWord = "church";
     initMap();
 }
+
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
     document.getElementById("places-list").innerHTML = "";
@@ -118,31 +138,7 @@ function getHospitals() {
     initMap();
 }
 
-
-
-// api lat long cenvter goes here
-//save those converted lat and long to variables below 
-
-
-
-// variables for lat and longitude from user entered address will replace the numbers below
-let userInputLat = 30.2672;
-let userInputLng = -97.7431;
-
-var searchLat = userInputLat;
-var searchLng = userInputLng;
-
-// Store
-
-//create a list to store lat and long in
-let searchedLoc = [];
-
-//push lat and long variables into list
-searchedLoc.push(searchLat, searchLng);
-
-//store list in local storage with the name of lat, long
-localStorage.setItem("lat, Long", searchedLoc);
-
+var searchWord;
 
 function initMap() {
     // Create the map.
@@ -165,8 +161,10 @@ function initMap() {
         }
     };
 
+
+
     // Perform a nearby search.
-    service.nearbySearch({ location: searchedLocation, radius: 500, type: searchWord },
+    service.nearbySearch({ location: searchedLocation, radius: 2000, type: searchWord },
         (results, status, pagination) => {
             if (status !== "OK" || !results) return;
             addPlaces(results, map);
@@ -210,7 +208,7 @@ function addPlaces(places, map) {
             placesDisplay.appendChild(itemContainer);
             itemContainer.appendChild(img);
             itemContainer.appendChild(li);
-            
+
             itemContainer.addEventListener("click", () => {
                 map.setCenter(place.geometry.location);
             });
