@@ -42,17 +42,22 @@ function initAutocomplete() {
 };
 
 // end address auto complete
+function initialLocation() {
+    // fetch IP of user (first API for our app, identifies the users exact location by IP address)
+    var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
+    var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
+    fetch(IPapi)
+        .then((r) => r.json())
+        .then((d) => {
+            // assign user's lat/long to variables to be used by Google Places
+            searchLat = d.latitude;
+            searchLng = d.longitude;
+            initMap()
+        });
 
-// fetch IP of user (first API for our app, identifies the users exact location by IP address)
-var IPapiKey = "602f8d85bc584bb4b0b520771a9d3287";
-var IPapi = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + IPapiKey;
-fetch(IPapi)
-    .then((r) => r.json())
-    .then((d) => {
-        // assign user's lat/long to variables to be used by Google Places
-        searchLat = d.latitude;
-        searchLng = d.longitude;
-    });
+}
+initialLocation();
+
 // end of IP of user fetch
 
 
@@ -89,14 +94,22 @@ function searchBar() {
             // // var longInput = data.results[0].geometry.location.lng;
             // console.log(latInput);
 
-            var searchLat = data.results[0].geometry.location.lat;
-            var searchLng = data.results[0].geometry.location.lng;
-            console.log(searchLat, searchLng);
+            var userInputLat = data.results[0].geometry.location.lat;
+            var userInputLng = data.results[0].geometry.location.lng;
+            console.log(userInputLat, userInputLng);
+            searchLat = userInputLat;
+            searchLng = userInputLng;
+            console.log(searchLat, searchLng)
         })
-    console.log(searchLat, searchLng);
-    initMap();
+        .then(
+            initMap()
+        )
+    console.log(searchLat, searchLng)
 }
 
+console.log(searchLat, searchLng)
+
+//local storage 
 //create a list to store lat and long in
 let searchedLoc = [];
 
@@ -110,7 +123,7 @@ localStorage.setItem("lat, Long", searchedLoc);
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
-    searchWord = ""
+    searchWord = searchEl.value;
     document.getElementById("places-list").innerHTML = "";
     initMap();
 }
@@ -143,6 +156,7 @@ function getHospitals() {
 
 
 
+
 // api lat long cenvter goes here
 //save those converted lat and long to variables below 
 // variables for lat and longitude from user entered address will replace the numbers below
@@ -150,7 +164,7 @@ function getHospitals() {
 // Store
 
 
-
+var searchWord;
 
 function initMap() {
     // Create the map.
@@ -172,9 +186,11 @@ function initMap() {
             getNextPage();
         }
     };
-    var searchWord;
+
+
+
     // Perform a nearby search.
-    service.nearbySearch({ location: searchedLocation, radius: 500, type: searchWord },
+    service.nearbySearch({ location: searchedLocation, radius: 2000, type: searchWord },
         (results, status, pagination) => {
             if (status !== "OK" || !results) return;
             addPlaces(results, map);
