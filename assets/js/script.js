@@ -259,3 +259,5 @@ clearEl.onclick = function() {
     localStorage.clear();
     window.location.reload();
 }
+
+// end
