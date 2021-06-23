@@ -49,11 +49,10 @@
 
 #map {
     height: 500px;
-    width: 500px;
+    width: 100%;
 }
-
-
 /* end map container */
+
 
 
 /* Start modal */
@@ -97,5 +96,5 @@
     font-size: 0.8rem;
 }
 
-
 /* end footer */
+
