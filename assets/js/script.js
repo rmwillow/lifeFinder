@@ -15,6 +15,11 @@ var groceryIdEl = document.getElementById("groceryID");
 var churchIdEl = document.getElementById("churchID");
 var schoolIdEl = document.getElementById("schoolID");
 var hospitalIdEl = document.getElementById("hospitalID");
+var archivesEl = document.getElementById("show-history");
+var hideEl = document.getElementById("hide");
+var clearEl = document.getElementById("clear");
+var previousSearchEl = document.getElementById("previous-search");
+var previousSearches = document.getElementById("previousSearches");
 
 // End global variables
 
@@ -91,17 +96,12 @@ function searchBar(addressSearch) {
 
 //local storage 
 function history(input) {
-        //check localStorage for previous searched address or create an array to store addresses in
-    let searchedLoc = JSON.parse(localStorage.getItem('history')) || [];
-
     // check if a value is typed or if the value already exists
     if (!input || searchedLoc.includes(input)) {
         return
     } else {
         //push searched address into array
         searchedLoc.push(input);
-        console.log(searchedLoc);
-
         //store array in local storage
         localStorage.setItem("history", JSON.stringify(searchedLoc));
     }
@@ -109,14 +109,15 @@ function history(input) {
 };
 
 // Start render search history
+//check localStorage for previous searched address or create an array to store addresses in
+var searchedLoc = JSON.parse(localStorage.getItem('history')) || [];
+
 function searchHistory() {
-    //check localStorage for previous searched address or create an array to store addresses in
-    let searchedLoc = JSON.parse(localStorage.getItem('history')) || [];
     for (let i = 0; i < searchedLoc.length; i++) {
         var newBtn = document.createElement("div");
         previousSearches.appendChild(newBtn);
-        newBtn.classList = "panel-block button is-light is-large is-outlined is-fullwidth";
-        newBtn.innerHTML = citiesArray[i];
+        newBtn.classList = "panel-block button is-warning is-light  is-outlined is-fullwidth";
+        newBtn.innerHTML = searchedLoc[i];
         // call the function to use the address from btn
         newBtn.onclick = function (event) {
             var address = event.target.textContent;
@@ -124,6 +125,7 @@ function searchHistory() {
         }
     }
 };
+searchHistory()
 // End render search history
 
 //function to run user button click data into variables and displays all options on page in a list
@@ -246,3 +248,14 @@ groceryIdEl.onclick = function () { getGroceries() };
 churchIdEl.onclick = function () { getChurches() };
 schoolIdEl.onclick = function () { getSchools() };
 hospitalIdEl.onclick = function () { getHospitals() };
+
+archivesEl.onclick = function() {
+    previousSearchEl.removeAttribute("class", "archives")
+};
+hideEl.onclick = function() {
+    previousSearchEl.classList = ("archives")
+};
+clearEl.onclick = function() {
+    localStorage.clear();
+    window.location.reload();
+}

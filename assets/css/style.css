@@ -56,7 +56,15 @@
 .button {
     white-space: normal;
 }
+
 /*end places list*/
+
+/* Start History */
+.archives {
+    display: none;
+}
+
+/* End History */
 
 /* Start modal */
 
