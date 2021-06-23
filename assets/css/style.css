@@ -50,7 +50,8 @@
     font-weight: 700;
     text-align: center;
 }
-.hide {
+
+.hide-btn {
     display: none;
 }
 /* end map container */
