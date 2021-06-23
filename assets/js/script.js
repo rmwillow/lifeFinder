@@ -35,10 +35,8 @@ function initAutocomplete() {
             componentRestrictions: { country: "us" }
         }
     );
-
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
-
 };
 
 // end address auto complete
@@ -54,17 +52,8 @@ function initialLocation() {
             searchLng = d.longitude;
             initMap()
         });
-
 }
 initialLocation();
-
-// end of IP of user fetch
-
-
-
-//api call functions
-
-//google places api START
 
 //button click and button data storage
 //getting elements name
@@ -100,14 +89,10 @@ function searchBar() {
             searchLat = userInputLat;
             searchLng = userInputLng;
             console.log(searchLat, searchLng)
-        })
-        .then(
             initMap()
-        )
+        })
     console.log(searchLat, searchLng)
 }
-
-console.log(searchLat, searchLng)
 
 //local storage 
 //create a list to store lat and long in
@@ -118,8 +103,6 @@ searchedLoc.push(searchLat, searchLng);
 
 //store list in local storage with the name of lat, long
 localStorage.setItem("lat, Long", searchedLoc);
-
-
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
@@ -141,6 +124,7 @@ function getChurches() {
     searchWord = "church";
     initMap();
 }
+
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
     document.getElementById("places-list").innerHTML = "";
@@ -153,16 +137,6 @@ function getHospitals() {
     searchWord = "hospital";
     initMap();
 }
-
-
-
-
-// api lat long cenvter goes here
-//save those converted lat and long to variables below 
-// variables for lat and longitude from user entered address will replace the numbers below
-
-// Store
-
 
 var searchWord;
 
