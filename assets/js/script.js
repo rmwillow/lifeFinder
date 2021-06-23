@@ -71,9 +71,7 @@ initialLocation();
 // End initial user's IP
 
 // Start searchBar functioanlity
-function searchBar() {
-    // retrive the search bar value and store it into variable to be used to find lat/lng
-    var addressSearch = searchEl.value;
+function searchBar(addressSearch) {
     // clear the places list
     document.getElementById("places-list").innerHTML = "";
     // use search value to transform it into lat/lng
@@ -91,16 +89,42 @@ function searchBar() {
 }
 // End searchBar functioanlity
 
-
 //local storage 
-//create a list to store lat and long in
-let searchedLoc = [];
+function history(input) {
+        //check localStorage for previous searched address or create an array to store addresses in
+    let searchedLoc = JSON.parse(localStorage.getItem('history')) || [];
 
-//push lat and long variables into list
-searchedLoc.push(searchLat, searchLng);
+    // check if a value is typed or if the value already exists
+    if (!input || searchedLoc.includes(input)) {
+        return
+    } else {
+        //push searched address into array
+        searchedLoc.push(input);
+        console.log(searchedLoc);
 
-//store list in local storage with the name of lat, long
-localStorage.setItem("lat, Long", searchedLoc);
+        //store array in local storage
+        localStorage.setItem("history", JSON.stringify(searchedLoc));
+    }
+
+};
+
+// Start render search history
+function searchHistory() {
+    //check localStorage for previous searched address or create an array to store addresses in
+    let searchedLoc = JSON.parse(localStorage.getItem('history')) || [];
+    for (let i = 0; i < searchedLoc.length; i++) {
+        var newBtn = document.createElement("div");
+        previousSearches.appendChild(newBtn);
+        newBtn.classList = "panel-block button is-light is-large is-outlined is-fullwidth";
+        newBtn.innerHTML = citiesArray[i];
+        // call the function to use the address from btn
+        newBtn.onclick = function (event) {
+            var address = event.target.textContent;
+            searchBar(address);
+        }
+    }
+};
+// End render search history
 
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
@@ -212,7 +236,11 @@ function addPlaces(places, map) {
 // End search places and create the list
 
 //button click and button data storage
-searchBtnEl.onclick = function () { searchBar() };
+searchBtnEl.onclick = function () {
+    searchBar(searchEl.value);
+    history(searchEl.value);
+    searchEl.value = '';
+};
 allIdEl.onclick = function () { getAll() };
 groceryIdEl.onclick = function () { getGroceries() };
 churchIdEl.onclick = function () { getChurches() };

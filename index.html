@@ -32,7 +32,7 @@
     <!-- End Header -->
 
     <!-- Start main -->
-    <main >
+    <main>
         <div class="columns is-multiline">
             <!-- search with options -->
             <div class="column is-full box">
@@ -75,12 +75,35 @@
                 <ul id="places"></ul>
                 <div id="more"></div>
                 <!-- End embedded map. -->
-                <div class="button is-warning is-fullwidth">search history</div>
+                <!-- open search history container -->
+                <div class="button is-warning is-fullwidth">
+                    Archives
+                </div>
+
+                <!-- History container -->
+                <div class="panel previous-searches">
+                    <div class="panel-block panel-header">
+                        Search History
+                    </div>
+                    <!-- section to create the list from local storage -->
+                    <div class=" previous-searches panel-block">
+                        <div class="panel-block button is-light is-large is-outlined is-fullwidth"></div>
+                    </div>
+                    <div class="panel-block">
+                        <!-- clear search history -->
+                        <div id="clear" class="button is-danger is-light is-outlined is-fullwidth city-btn">
+                            Clear Search History
+                        </div>
+                        <!-- hide the archives section -->
+                        <div id="hide" class="button is-link is-light is-outlined is-fullwidth city-btn">
+                            Hide Search History
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!--Populated list section- RIGHT SIDE-->
             <div class="column box is-5 buttons" id="places-list">
-                <!-- <ul class="is-full" ></ul> -->
             </div>
             <div class="column is-1"></div>
         </div>
@@ -124,7 +147,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&libraries=places&v=weekly&map_ids=8d193001f940fde3"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&libraries=places&v=weekly&map_ids=8d193001f940fde3"></script>
 
     <script src="./assets/js/script.js"></script>
 
