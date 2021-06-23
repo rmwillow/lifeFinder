@@ -4,12 +4,9 @@
     box-sizing: border-box;
 }
 
-
 /* start body */
 
-
 /* end body */
-
 
 /* start header */
 
@@ -35,15 +32,11 @@
     font-style: italic;
 }
 
-
 /* end header */
-
 
 /* start search bar section */
 
-
 /* end search bar section */
-
 
 /* start map container */
 
@@ -51,12 +44,23 @@
     height: 500px;
     width: 100%;
 }
+
+#sh-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+.hide {
+    display: none;
+}
 /* end map container */
 
 /*start places list*/
+
 #places-list img {
-max-height: 90%;
+    max-height: 90%;
 }
+
 /*end places list*/
 
 /* Start modal */
@@ -80,9 +84,7 @@ max-height: 90%;
     align-items: center;
 }
 
-
 /* End modal */
-
 
 /* start footer */
 
@@ -101,4 +103,3 @@ max-height: 90%;
 }
 
 /* end footer */
-
