@@ -1,6 +1,6 @@
 // start Modals
 // alert modal will replace any default alerts
-var alertModal = function () {
+var alertModal = function() {
     // select the page and disables the scroll by adding respective classes(from framework)
     var htmlEl = document.querySelector('html');
     htmlEl.classList.add('is-clipped');
@@ -9,7 +9,7 @@ var alertModal = function () {
     modalEl.classList.add('is-active')
 };
 // close modals by removing the respective classes
-var closeModalBtn = function () {
+var closeModalBtn = function() {
     var htmlEl = document.querySelector('html');
     htmlEl.classList.remove('is-clipped');
     var modalEl = document.querySelector('#alert');
@@ -30,10 +30,10 @@ function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
         (searchEl), {
-        // options(from google documentation)
-        types: ['geocode'],
-        componentRestrictions: { country: "us" }
-    }
+            // options(from google documentation)
+            types: ['geocode'],
+            componentRestrictions: { country: "us" }
+        }
     );
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
@@ -52,27 +52,25 @@ function initialLocation() {
             searchLng = d.longitude;
             initMap()
         });
-};
+}
 initialLocation();
 
 //button click and button data storage
 //getting elements name
-document.getElementById("search").onclick = function () { searchBar() };
-document.getElementById("allID").onclick = function () { getAll() };
-document.getElementById("groceryID").onclick = function () { getGroceries() };
-document.getElementById("churchID").onclick = function () { getChurches() };
-document.getElementById("schoolID").onclick = function () { getSchools() };
-document.getElementById("hospitalID").onclick = function () { getHospitals() };
-var responseContainerEl = document.getElementById('buttonsContainer');
-var clearEl = document.getElementById("clear");
+document.getElementById("search").onclick = function() { searchBar() };
+document.getElementById("allID").onclick = function() { getAll() };
+document.getElementById("groceryID").onclick = function() { getGroceries() };
+document.getElementById("churchID").onclick = function() { getChurches() };
+document.getElementById("schoolID").onclick = function() { getSchools() };
+document.getElementById("hospitalID").onclick = function() { getHospitals() };
 
 var searchLat;
 var searchLng;
 
 function searchBar() {
-    // retrive the search bar value and store it into variable to be used by HERE API
+    // retrieve the search bar value and store it into variable to be used by HERE API
     var addressSearch = searchEl.value;
-    console.log(addressSearch);
+
     //this is where chris code call from the api lat long will go to call google maps
     document.getElementById("places-list").innerHTML = "";
 
@@ -81,197 +79,173 @@ function searchBar() {
         .then(data => {
             var userInputLat = data.results[0].geometry.location.lat;
             var userInputLng = data.results[0].geometry.location.lng;
-            console.log(userInputLat, userInputLng);
+
             searchLat = userInputLat;
             searchLng = userInputLng;
-            console.log(searchLat, searchLng);
+
+
             initMap()
+                //local storage 
+                //create a list to store lat and long in
+            let searchedLoc = [];
+
+            //push lat and long variables into list
+            searchedLoc.push(searchLat, searchLng);
+
+            //store list in local storage with the name of lat, long
+            localStorage.setItem("lat, Long", searchedLoc);
         })
-    console.log(searchLat, searchLng);
-
-
 
     function cityButtons() {
-
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
             .then(response => response.json())
             .then(data => {
-
-                console.log(data);
                 let fullAddress = data.results[0].formatted_address;
-                console.log(fullAddress);
                 // Create a iterable that will select the <div> where the city will be displayed
-                let addressBtn = document.createElement("div");
+                let responseContainerEl = document.getElementById('buttonsContainer')
+                let addressBtn = document.createElement("BUTTON");
                 addressBtn.setAttribute('src', fullAddress);
                 addressBtn.textContent = fullAddress;
                 addressBtn.className = "button is-info is-outlined is-medium is-fullwidth"
-                console.log(addressBtn);
-                // Append to the button
-                //document.body.appendChild(addressBtn);
+                addressBtn.style = "margin: 10px; justify-content: center;"
+                    // Append to the button
+                    //document.body.appendChild(addressBtn);
                 responseContainerEl.append(addressBtn);
-                clearEl.removeAttribute('style','display: none;')
 
                 //onclick city name will load data with no fetch request
-                addressBtn.onclick = function () {
-                    //  get value of button
-                    let prevAddress = addressBtn.innerHTML;
-                    console.log(prevAddress);
-                    //call all dynamic data functions
-                    // initialLocation();
-                    document.getElementById("places-list").innerHTML = "";
-
+                addressBtn.onclick = function() {
+                    //call fetch again for onclick of buttons to make data dynamic
                     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
                         .then(response => response.json())
                         .then(data => {
-
-                            console.log(data);
-                            // var latInput = data.results[0].geometry.location.lng;
-                            // // var longInput = data.results[0].geometry.location.lng;
-                            // console.log(latInput);
-
+                            //calling vars again because of init map
                             var userInputLat = data.results[0].geometry.location.lat;
                             var userInputLng = data.results[0].geometry.location.lng;
-                            console.log(userInputLat, userInputLng);
                             searchLat = userInputLat;
                             searchLng = userInputLng;
-                            console.log(searchLat, searchLng)
                             initMap()
                         })
                 };
-
-            })
-    };
+            });
+    }
     cityButtons();
-};
-
-
-clearEl.onclick = function () {
-    responseContainerEl.innerHTML = '';
-    clearEl.addAttribute('style', 'display: none;');
-    window.location.reload();
 }
 
-    //local storage 
-    //create a list to store lat and long in
-    let searchedLoc = [];
+//clears page and buttonsContainer
+var clearEl = document.getElementById("clear");
+clearEl.className = "button is-danger is-light is-outlined is-medium is-fullwidth"
+clearEl.style = "margin: 10px; justify-content: center;"
+clearEl.onclick = function() {
+    localStorage.clear();
+    window.location.reload();
+};
+//function to run user button click data into variables and displays all options on page in a list
+function getAll() {
+    searchWord = searchEl.value;
+    document.getElementById("places-list").innerHTML = "";
+    initMap()
+};
 
-    //push lat and long variables into list
-    searchedLoc.push(searchLat, searchLng);
+//function to run user button click data into variables and displays on page in a list
+function getGroceries() {
+    document.getElementById("places-list").innerHTML = "";
+    searchWord = "store";
+    initMap()
+};
 
-    //store list in local storage with the name of lat, long
-    localStorage.setItem("lat, Long", searchedLoc);
+//function to run user button click data into variables and displays on page for groceries in a list
+function getChurches() {
+    document.getElementById("places-list").innerHTML = "";
+    searchWord = "church";
+    initMap()
+};
 
-    //function to run user button click data into variables and displays all options on page in a list
-    function getAll() {
-        searchWord = searchEl.value;
-        document.getElementById("places-list").innerHTML = "";
-        initMap()
-    };
+//function to run user button click data into variables and displays on page for schools in a list
+function getSchools() {
+    document.getElementById("places-list").innerHTML = "";
+    searchWord = "school";
+    initMap()
+};
+//function to run user button click data into variables and displays on page for hospitals in a list
+function getHospitals() {
+    document.getElementById("places-list").innerHTML = "";
+    searchWord = "hospital";
+    initMap()
+};
 
-    //function to run user button click data into variables and displays on page in a list
-    function getGroceries() {
-        document.getElementById("places-list").innerHTML = "";
-        searchWord = "store";
-        initMap()
-    };
+var searchWord;
 
-    //function to run user button click data into variables and displays on page for groceries in a list
-    function getChurches() {
-        document.getElementById("places-list").innerHTML = "";
-        searchWord = "church";
-        initMap()
-    };
+function initMap() {
+    // Create the map.
+    const searchedLocation = { lat: searchLat, lng: searchLng };
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: searchedLocation,
+        zoom: 17,
+        mapId: "8d193001f940fde3",
+    });
+    // Create the places service.
+    const service = new google.maps.places.PlacesService(map);
+    let getNextPage;
+    const moreButton = document.getElementById("more");
 
-    //function to run user button click data into variables and displays on page for schools in a list
-    function getSchools() {
-        document.getElementById("places-list").innerHTML = "";
-        searchWord = "school";
-        initMap()
-    };
-    //function to run user button click data into variables and displays on page for hospitals in a list
-    function getHospitals() {
-        document.getElementById("places-list").innerHTML = "";
-        searchWord = "hospital";
-        initMap()
-    };
+    moreButton.onclick = function() {
+        moreButton.disabled = true;
 
-    var searchWord;
-
-    function initMap() {
-        // Create the map.
-        const searchedLocation = { lat: searchLat, lng: searchLng };
-        const map = new google.maps.Map(document.getElementById("map"), {
-            center: searchedLocation,
-            zoom: 17,
-            mapId: "8d193001f940fde3",
-        });
-        // Create the places service.
-        const service = new google.maps.places.PlacesService(map);
-        let getNextPage;
-        const moreButton = document.getElementById("more");
-
-        moreButton.onclick = function () {
-            moreButton.disabled = true;
-
-            if (getNextPage) {
-                getNextPage();
-            }
-        };
-
-
-
-        // Perform a nearby search.
-        service.nearbySearch({ location: searchedLocation, radius: 2000, type: searchWord },
-            (results, status, pagination) => {
-                if (status !== "OK" || !results) return;
-                addPlaces(results, map);
-                moreButton.disabled = !pagination || !pagination.hasNextPage;
-
-                if (pagination && pagination.hasNextPage) {
-                    getNextPage = () => {
-                        // Note: nextPage will call the same handler function as the initial call
-                        pagination.nextPage();
-                    };
-                }
-            }
-        )
-    };
-
-    function addPlaces(places, map) {
-        const placesList = document.getElementById("list-container");
-        const placesDisplay = document.getElementById("places-list");
-        for (const place of places) {
-            if (place.geometry && place.geometry.location) {
-                const image = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
-                new google.maps.Marker({
-                    map,
-                    icon: image,
-                    title: place.name,
-                    position: place.geometry.location
-                });
-                const itemContainer = document.createElement("div");
-                const li = document.createElement("div");
-                const img = document.createElement("img");
-                img.setAttribute("src", place.icon);
-                itemContainer.classList = "panel-block button is-light is-large is-outlined";
-                li.classList = "panel-block is-active";
-                li.textContent = place.name;
-                placesDisplay.appendChild(itemContainer);
-                itemContainer.appendChild(img);
-                itemContainer.appendChild(li);
-                itemContainer.style = "margin: 10px; contain: content;"
-
-                itemContainer.addEventListener("click", () => {
-                    map.setCenter(place.geometry.location)
-                })
-            }
+        if (getNextPage) {
+            getNextPage();
         }
     };
 
-//city button function data
+    // Perform a nearby search.
+    service.nearbySearch({ location: searchedLocation, radius: 2000, type: searchWord },
+        (results, status, pagination) => {
+            if (status !== "OK" || !results) return;
+            addPlaces(results, map);
+            moreButton.disabled = !pagination || !pagination.hasNextPage;
+
+            if (pagination && pagination.hasNextPage) {
+                getNextPage = () => {
+                    // Note: nextPage will call the same handler function as the initial call
+                    pagination.nextPage();
+                };
+            }
+        }
+    )
+};
+
+function addPlaces(places, map) {
+    const placesList = document.getElementById("list-container");
+    const placesDisplay = document.getElementById("places-list");
+    for (const place of places) {
+        if (place.geometry && place.geometry.location) {
+            const image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+            new google.maps.Marker({
+                map,
+                icon: image,
+                title: place.name,
+                position: place.geometry.location
+            });
+            const itemContainer = document.createElement("div");
+            const li = document.createElement("div");
+            const img = document.createElement("img");
+            img.setAttribute("src", place.icon);
+            itemContainer.classList = "panel-block button is-light is-large is-outlined";
+            li.classList = "panel-block is-active";
+            li.textContent = place.name;
+            placesDisplay.appendChild(itemContainer);
+            itemContainer.appendChild(img);
+            itemContainer.appendChild(li);
+            itemContainer.style = "margin: 10px; contain: content;"
+
+            itemContainer.addEventListener("click", () => {
+                map.setCenter(place.geometry.location)
+            })
+        }
+    }
+}
