@@ -53,7 +53,11 @@
 }
 /* end map container */
 
-
+/*start places list*/
+#places-list img {
+max-height: 90%;
+}
+/*end places list*/
 
 /* Start modal */
 
