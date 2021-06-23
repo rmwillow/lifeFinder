@@ -109,6 +109,12 @@ function searchBar() {
                 let addressBtn = document.createElement("BUTTON");
                 addressBtn.setAttribute('src', fullAddress);
                 addressBtn.textContent = fullAddress;
+                addressBtn.className = "button is-info is-outlined is-medium is-fullwidth"
+                addressBtn.style = "margin: 10px; justify-content: center;"
+                console.log(addressBtn);
+                // Append to the button
+                //document.body.appendChild(addressBtn);
+                responseContainerEl.append(addressBtn);
 
                 //onclick city name will load data with no fetch request
                 addressBtn.onclick = function() {
@@ -117,14 +123,27 @@ function searchBar() {
                     console.log(prevAddress);
                     //call all dynamic data functions
                     // initialLocation();
-                    // searchBar();
+                    document.getElementById("places-list").innerHTML = "";
+
+                    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+                        .then(response => response.json())
+                        .then(data => {
+
+                            console.log(data);
+                            // var latInput = data.results[0].geometry.location.lng;
+                            // // var longInput = data.results[0].geometry.location.lng;
+                            // console.log(latInput);
+
+                            var userInputLat = data.results[0].geometry.location.lat;
+                            var userInputLng = data.results[0].geometry.location.lng;
+                            console.log(userInputLat, userInputLng);
+                            searchLat = userInputLat;
+                            searchLng = userInputLng;
+                            console.log(searchLat, searchLng)
+                            initMap()
+                        })
                 };
-                addressBtn.className = "button is-info is-outlined is-medium is-fullwidth"
-                addressBtn.style = "margin: 10px; justify-content: center;"
-                console.log(addressBtn);
-                // Append to the button
-                //document.body.appendChild(addressBtn);
-                responseContainerEl.append(addressBtn);
+
             });
     }
     cityButtons();
