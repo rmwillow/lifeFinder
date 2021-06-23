@@ -51,6 +51,9 @@
     text-align: center;
 }
 
+.hide-btn {
+    display: none;
+}
 /* end map container */
 
 /*start places list*/
