@@ -81,14 +81,15 @@ function searchBar() {
     document.getElementById("places-list").innerHTML = "";
 
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
-        //fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
-
-    //fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${addressName}&apiKey=bdqcjlmCmyait3HRaSan-DswcIzcFnXA6kF_lisyTHs`)
-    .then(response => response.json())
+        .then(response => response.json())
         .then(data => console.log(data));
-    console.log(data);
-    //searchWord willl contain lat and long?
-    // searchWord = ""
+    var latInput = data[0].geometry.location.lat;
+    var longInput = data.results[0].geometry.location.lng;
+    console.log(latInput);
+
+
+    //searchWord = [];
+
     initMap();
 
 }
