@@ -7,8 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Life Finder to go</title>
@@ -32,7 +31,7 @@
     <!-- End Header -->
 
     <!-- Start main -->
-    <main >
+    <main>
         <div class="columns is-multiline">
             <!-- search with options -->
             <div class="column is-full box">
@@ -43,8 +42,7 @@
                     <!-- search bar -->
                     <div class="panel-block field has-addons">
                         <div class="control has-icons-left">
-                            <input id="autocomplete" onfocus="initAutocomplete()" class="input is-info" type="text"
-                                placeholder="Search" />
+                            <input id="autocomplete" onfocus="initAutocomplete()" class="input is-info" type="text" placeholder="Search" />
                             <span class="icon is-left">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                             </span>
@@ -73,14 +71,40 @@
                 <!--  Start embedded map. -->
                 <div class="box" id="map"></div>
                 <ul id="places"></ul>
+                <br />
+                <div id="buttonsContainer"></div>
                 <div id="more"></div>
                 <!-- End embedded map. -->
-                <div class="button is-warning is-fullwidth">search history</div>
+                <!-- open search history container -->
+                <div class="button is-warning is-fullwidth" id="show-history">
+                    Archives
+                </div>
+
+                <!-- History container -->
+                <div class="panel archives" id="previous-search">
+                    <div class="panel-block panel-header">
+                        Search History
+                    </div>
+                    <!-- section to create the list from local storage -->
+                    <div class=" previous-searches panel-block buttons" id="previousSearches">
+                       
+                    </div>
+                    <div class="panel-block">
+                        <!-- clear search history -->
+                        <div id="clear" class="button is-danger is-light is-outlined is-fullwidth city-btn">
+                            Clear Search History
+                        </div>
+                        <!-- hide the archives section -->
+                        <div id="hide" class="button is-link is-light is-outlined is-fullwidth city-btn">
+                            Hide Search History
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
             <!--Populated list section- RIGHT SIDE-->
             <div class="column box is-5 buttons" id="places-list">
-                <!-- <ul class="is-full" ></ul> -->
             </div>
             <div class="column is-1"></div>
         </div>
@@ -124,7 +148,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&libraries=places&v=weekly&map_ids=8d193001f940fde3"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&libraries=places&v=weekly&map_ids=8d193001f940fde3"></script>
 
     <script src="./assets/js/script.js"></script>
 
