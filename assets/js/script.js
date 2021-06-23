@@ -92,6 +92,38 @@ function searchBar() {
             initMap()
         })
     console.log(searchLat, searchLng)
+
+
+
+    function cityButtons() {
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+            .then(response => response.json())
+            .then(data => {
+
+                console.log(data);
+                let cityName = data.results[0].formatted_address;
+                // Create a iterable that will select the <div> where the city will be displayed
+                let responseContainerEl = document.getElementById('buttonsContainer');
+                let cityBtn = document.createElement("BUTTON");
+                cityBtn.setAttribute('src', cityName);
+                cityBtn.textContent = cityName;
+
+                //onclick city name will load data with no fetch request
+                cityBtn.onclick = function() {
+                    //  get value of button
+                    let oldCityName = cityBtn.innerHTML;
+                    console.log(oldCityName);
+                    //call all dynamic data functions
+                    initialLocation();
+                    searchBar();
+                };
+                cityBtn.className = "button is-info is-outlined"
+                    // Append to the button
+                responseContainerEl.appendChild(cityBtn);
+            });
+    }
+    cityButtons();
 }
 
 //local storage 
@@ -215,3 +247,5 @@ function addPlaces(places, map) {
         }
     }
 }
+
+//city button function data
