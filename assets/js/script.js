@@ -85,7 +85,64 @@ function searchBar() {
             console.log(searchLat, searchLng);
             initMap()
         })
+    console.log(searchLat, searchLng)
+
+
+
+    function cityButtons() {
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+            .then(response => response.json())
+            .then(data => {
+
+                console.log(data);
+                let fullAddress = data.results[0].formatted_address;
+                console.log(fullAddress);
+                // Create a iterable that will select the <div> where the city will be displayed
+                let responseContainerEl = document.getElementById('buttonsContainer')
+                let addressBtn = document.createElement("BUTTON");
+                addressBtn.setAttribute('src', fullAddress);
+                addressBtn.textContent = fullAddress;
+                addressBtn.className = "button is-info is-outlined is-medium is-fullwidth"
+                addressBtn.style = "margin: 10px; justify-content: center;"
+                console.log(addressBtn);
+                // Append to the button
+                //document.body.appendChild(addressBtn);
+                responseContainerEl.append(addressBtn);
+
+                //onclick city name will load data with no fetch request
+                addressBtn.onclick = function() {
+                    //  get value of button
+                    let prevAddress = addressBtn.innerHTML;
+                    console.log(prevAddress);
+                    //call all dynamic data functions
+                    // initialLocation();
+                    document.getElementById("places-list").innerHTML = "";
+
+                    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
+                        .then(response => response.json())
+                        .then(data => {
+
+                            console.log(data);
+                            // var latInput = data.results[0].geometry.location.lng;
+                            // // var longInput = data.results[0].geometry.location.lng;
+                            // console.log(latInput);
+
+                            var userInputLat = data.results[0].geometry.location.lat;
+                            var userInputLng = data.results[0].geometry.location.lng;
+                            console.log(userInputLat, userInputLng);
+                            searchLat = userInputLat;
+                            searchLng = userInputLng;
+                            console.log(searchLat, searchLng)
+                            initMap()
+                        })
+                };
+
+            });
+    }
+    cityButtons();
 }
+
 
 //local storage 
 //create a list to store lat and long in
@@ -201,9 +258,13 @@ function addPlaces(places, map) {
             placesDisplay.appendChild(itemContainer);
             itemContainer.appendChild(img);
             itemContainer.appendChild(li);
+            itemContainer.style = "margin: 10px; contain: content;"
+
             itemContainer.addEventListener("click", () => {
                 map.setCenter(place.geometry.location)
             })
         }
     }
-};
+}
+//city button function data
+
