@@ -6,14 +6,14 @@ var alertModal = function() {
     htmlEl.classList.add('is-clipped');
     // select modal div and render on page(styles are from framework)
     var modalEl = document.querySelector('#alert');
-    modalEl.classList.add('is-active');
+    modalEl.classList.add('is-active')
 };
 // close modals by removing the respective classes
 var closeModalBtn = function() {
     var htmlEl = document.querySelector('html');
     htmlEl.classList.remove('is-clipped');
     var modalEl = document.querySelector('#alert');
-    modalEl.classList.remove('is-active');
+    modalEl.classList.remove('is-active')
 };
 // "close button" on modals will close them
 document.querySelector(".modal-close").addEventListener("click", closeModalBtn);
@@ -77,21 +77,14 @@ function searchBar() {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
         .then(response => response.json())
         .then(data => {
-
-            console.log(data);
-            // var latInput = data.results[0].geometry.location.lng;
-            // // var longInput = data.results[0].geometry.location.lng;
-            // console.log(latInput);
-
             var userInputLat = data.results[0].geometry.location.lat;
             var userInputLng = data.results[0].geometry.location.lng;
             console.log(userInputLat, userInputLng);
             searchLat = userInputLat;
             searchLng = userInputLng;
-            console.log(searchLat, searchLng)
+            console.log(searchLat, searchLng);
             initMap()
         })
-    console.log(searchLat, searchLng)
 }
 
 //local storage 
@@ -108,35 +101,35 @@ localStorage.setItem("lat, Long", searchedLoc);
 function getAll() {
     searchWord = searchEl.value;
     document.getElementById("places-list").innerHTML = "";
-    initMap();
-}
+    initMap()
+};
 
 //function to run user button click data into variables and displays on page in a list
 function getGroceries() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "store";
-    initMap();
-}
+    initMap()
+};
 
 //function to run user button click data into variables and displays on page for groceries in a list
 function getChurches() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "church";
-    initMap();
-}
+    initMap()
+};
 
 //function to run user button click data into variables and displays on page for schools in a list
 function getSchools() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "school";
-    initMap();
-}
+    initMap()
+};
 //function to run user button click data into variables and displays on page for hospitals in a list
 function getHospitals() {
     document.getElementById("places-list").innerHTML = "";
     searchWord = "hospital";
-    initMap();
-}
+    initMap()
+};
 
 var searchWord;
 
@@ -177,8 +170,8 @@ function initMap() {
                 };
             }
         }
-    );
-}
+    )
+};
 
 function addPlaces(places, map) {
     const placesList = document.getElementById("list-container");
@@ -190,28 +183,27 @@ function addPlaces(places, map) {
                 size: new google.maps.Size(71, 71),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25),
+                scaledSize: new google.maps.Size(25, 25)
             };
             new google.maps.Marker({
                 map,
                 icon: image,
                 title: place.name,
-                position: place.geometry.location,
+                position: place.geometry.location
             });
             const itemContainer = document.createElement("div");
             const li = document.createElement("div");
             const img = document.createElement("img");
-            img.setAttribute("src", place.icon)
+            img.setAttribute("src", place.icon);
             itemContainer.classList = "panel-block button is-light is-large is-outlined";
             li.classList = "panel-block is-active";
             li.textContent = place.name;
             placesDisplay.appendChild(itemContainer);
             itemContainer.appendChild(img);
             itemContainer.appendChild(li);
-
             itemContainer.addEventListener("click", () => {
-                map.setCenter(place.geometry.location);
-            });
+                map.setCenter(place.geometry.location)
+            })
         }
     }
-}
+};
