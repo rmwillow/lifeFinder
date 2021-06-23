@@ -69,19 +69,20 @@
         <div class="columns">
 
             <!--map section - LEFT SIDE-->
-            <div class="column is-4 is-offset-2">
+            <div class="column is-4 is-offset-1 ">
                 <!--  Start embedded map. -->
-                <div id="map"></div>
+                <div class="box" id="map"></div>
                 <ul id="places"></ul>
                 <div id="more"></div>
                 <!-- End embedded map. -->
+                <div class="button is-warning is-fullwidth">search history</div>
             </div>
 
             <!--Populated list section- RIGHT SIDE-->
-            <div class="column is-5">
-                <ul id="places-list"></ul>
+            <div class="column box is-5 buttons" id="places-list">
+                <!-- <ul class="is-full" ></ul> -->
             </div>
-            <div class="column is-2"></div>
+            <div class="column is-1"></div>
         </div>
     </main>
     <!-- End main -->
@@ -102,7 +103,7 @@
     <div id="general" class="modal">
         <div class="modal-background"></div>
         <div class="modal-content">
-            <h2>Alert! Alert!</h2>
+            <h2></h2>
             <!-- Any other Bulma elements you want -->
             <button class="modal-close is-medium" aria-label="close"></button>
         </div>

@@ -44,11 +44,17 @@
     height: 500px;
     width: 100%;
 }
+
 /* end map container */
 
 /*start places list*/
+
 #places-list img {
-max-height: 90%;
+    max-height: 90%;
+}
+
+.button {
+    white-space: normal;
 }
 /*end places list*/
 
@@ -94,12 +100,11 @@ max-height: 90%;
 /* end footer */
 
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
-@media screen and (max-width: 575px) {
-   
-    #places-list div {
-font-size: 1.2rem;
-    }
 
+@media screen and (max-width: 575px) {
+    #places-list div {
+        font-size: 1.2rem;
+    }
     #places-list img {
         max-width: 90%;
         max-height: 90%;
