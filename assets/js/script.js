@@ -64,7 +64,7 @@ document.getElementById("churchID").onclick = function () { getChurches() };
 document.getElementById("schoolID").onclick = function () { getSchools() };
 document.getElementById("hospitalID").onclick = function () { getHospitals() };
 var responseContainerEl = document.getElementById('buttonsContainer');
-
+var clearEl = document.getElementById("clear");
 
 var searchLat;
 var searchLng;
@@ -109,6 +109,7 @@ function searchBar() {
                 // Append to the button
                 //document.body.appendChild(addressBtn);
                 responseContainerEl.append(addressBtn);
+                clearEl.removeAttribute('style','display: none;')
 
                 //onclick city name will load data with no fetch request
                 addressBtn.onclick = function () {
@@ -143,10 +144,10 @@ function searchBar() {
     cityButtons();
 };
 
-var clearEl = document.getElementById("clear");
 
 clearEl.onclick = function () {
     responseContainerEl.innerHTML = '';
+    clearEl.addAttribute('style', 'display: none;');
     window.location.reload();
 }
 

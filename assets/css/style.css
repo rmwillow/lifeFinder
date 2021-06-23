@@ -50,6 +50,9 @@
     font-weight: 700;
     text-align: center;
 }
+.hide {
+    display: none;
+}
 /* end map container */
 
 /*start places list*/
