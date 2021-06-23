@@ -39,8 +39,6 @@ function initAutocomplete() {
     // When the user selects an address from the dropdown, Call any function instead of Modal, Modal is for testing purposes;
     // autocomplete.addListener('place_changed', sampleModal); 
 
-
-
 };
 
 // end address auto complete
@@ -72,6 +70,8 @@ document.getElementById("churchID").onclick = function() { getChurches() };
 document.getElementById("schoolID").onclick = function() { getSchools() };
 document.getElementById("hospitalID").onclick = function() { getHospitals() };
 
+var searchLat;
+var searchLng;
 
 function searchBar() {
     // retrive the search bar value and store it into variable to be used by HERE API
@@ -82,17 +82,29 @@ function searchBar() {
 
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressSearch}&key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw`)
         .then(response => response.json())
-        .then(data => console.log(data));
-    var latInput = data[0].geometry.location.lat;
-    var longInput = data.results[0].geometry.location.lng;
-    console.log(latInput);
+        .then(data => {
 
+            console.log(data);
+            // var latInput = data.results[0].geometry.location.lng;
+            // // var longInput = data.results[0].geometry.location.lng;
+            // console.log(latInput);
 
-    //searchWord = [];
-
+            var searchLat = data.results[0].geometry.location.lat;
+            var searchLng = data.results[0].geometry.location.lng;
+            console.log(searchLat, searchLng);
+        })
+    console.log(searchLat, searchLng);
     initMap();
-
 }
+
+//create a list to store lat and long in
+let searchedLoc = [];
+
+//push lat and long variables into list
+searchedLoc.push(searchLat, searchLng);
+
+//store list in local storage with the name of lat, long
+localStorage.setItem("lat, Long", searchedLoc);
 
 
 
@@ -133,26 +145,11 @@ function getHospitals() {
 
 // api lat long cenvter goes here
 //save those converted lat and long to variables below 
-
-
-
 // variables for lat and longitude from user entered address will replace the numbers below
-let userInputLat = 30.2672;
-let userInputLng = -97.7431;
-
-var searchLat = userInputLat;
-var searchLng = userInputLng;
 
 // Store
 
-//create a list to store lat and long in
-let searchedLoc = [];
 
-//push lat and long variables into list
-searchedLoc.push(searchLat, searchLng);
-
-//store list in local storage with the name of lat, long
-localStorage.setItem("lat, Long", searchedLoc);
 
 
 function initMap() {
@@ -175,7 +172,7 @@ function initMap() {
             getNextPage();
         }
     };
-
+    var searchWord;
     // Perform a nearby search.
     service.nearbySearch({ location: searchedLocation, radius: 500, type: searchWord },
         (results, status, pagination) => {
