@@ -154,13 +154,15 @@ function searchBar() {
 }
 
 function retrieveAddressButtons() {
-  searchedLocations = JSON.parse(localStorage.getItem("savedLocations"));
+  var searchedLocations = JSON.parse(localStorage.getItem("savedLocations"));
+  if (searchedLocations) {
   for (var i = 0; i < searchedLocations.length; i++) {
     var savedAddress = searchedLocations[i];
     addressSearch = savedAddress;
     document.getElementById("places-list").innerHTML = "";
     cityButtons(addressSearch);
   }
+}
 }
 
 //clears page and buttonsContainer
@@ -172,6 +174,7 @@ clearEl.onclick = function () {
   localStorage.clear();
   window.location.reload();
 };
+
 retrieveAddressButtons();
 //function to run user button click data into variables and displays all options on page in a list
 function getAll() {
