@@ -217,6 +217,8 @@ function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: searchedLocation,
         zoom: 17,
+        minZoom: 8,
+        maxZoom: 14,
         mapId: "8d193001f940fde3",
     });
     // Create the places service.
