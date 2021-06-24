@@ -1,96 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Life Finder to go</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Start header -->
     <header class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <div id="logo" class="navbar-item">
-                <span>life</span>Finder
-            </div>
+      <div class="navbar-brand">
+        <div id="logo" class="navbar-item"><span>life</span>Finder</div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <p class="navbar-item">Moving? Compare your surroundings!</p>
         </div>
-        <div class="navbar-menu">
-            <div class="navbar-end">
-                <p class="navbar-item"> Moving? Check out the surroundings!</p>
-            </div>
-        </div>
+      </div>
     </header>
     <!-- End Header -->
 
     <!-- Start main -->
     <main>
-        <div class="columns is-multiline">
-            <!-- search with options -->
-            <div class="column is-full box">
-                <article class="panel is-info" id="list-container">
+      <div class="columns is-multiline">
+        <!-- search with options -->
+        <div class="column is-4 is-offset-4">
+          <article class="panel is-info" id="list-container">
+            <p class="panel-heading">Have A Place Or Address In Mind?</p>
 
-                    <p class="panel-heading">Have A Place Or Address In Mind?</p>
-
-                    <!-- search bar -->
-                    <div class="panel-block field column is-half is-offset-one-quarter has-addons">
-                        <div class="control has-icons-left">
-                            <input id="autocomplete" onfocus="initAutocomplete()" class="input is-info" type="text" placeholder="Search" />
-                            <span class="icon is-left">
-                                <i class="fas fa-search" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        <button class="button is-info" id="search">Search</button>
-                    </div>
-
-                    <!-- filter buttons -->
-                    <div class="panel-tabs buttons">
-                        <button id="allID" class="button is-info is-outlined">All</button>
-                        <button id="schoolID" class="button is-info is-outlined">School</button>
-                        <button id="groceryID" class="button is-info is-outlined">Grocery</button>
-                        <button id="hospitalID" class="button is-info is-outlined">Hospitals</button>
-                        <button id="churchID" class="button is-info is-outlined">Churches</button>
-                    </div>
-                </article>
+            <!-- search bar -->
+            <div
+              class="
+                panel-block
+                field
+                column
+                is-full
+                has-addons
+              "
+            >
+              <div class="control has-icons-left">
+                <input
+                  id="autocomplete"
+                  onfocus="initAutocomplete()"
+                  class="input is-info"
+                  type="text"
+                  placeholder="Search"
+                />
+                <span class="icon is-left">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+              <button class="button is-info" id="search">Search</button>
             </div>
+
+            <!-- filter buttons -->
+            <div class="panel-tabs buttons">
+              <button id="allID" class="button is-info is-outlined">All</button>
+              <button id="schoolID" class="button is-info is-outlined">
+                Schools
+              </button>
+              <button id="groceryID" class="button is-info is-outlined">
+                Grocery
+              </button>
+              <button id="hospitalID" class="button is-info is-outlined">
+                Hospitals
+              </button>
+              <button id="churchID" class="button is-info is-outlined">
+                Churches
+              </button>
+            </div>
+          </article>
+        </div>
+              
+      </div>
+
+      <div class="columns ">
+        <div class="column is-4 is-offset-2">
+            <article class="panel is-info">
+
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr class="is-selected">
+
+                            <th>Austin, TX, USA</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                      <tr>
+                        <th>Icon</th>
+                        <th>Place</th>
+                        <th>Count</th>
+                        <th>Mile Radius</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <th><i class="fas fa-school"></i></th>
+                          <th>School</th>
+                          <th>3</th>
+                          <th>50 mi</th>
+                        </tr>
+                        <tr>
+                            <th><i class="fas fa-shopping-cart"></i></th>
+                            <th>Grocery Store</th>
+                            <th>4</th>
+                            <th>50 mi</th>
+                          </tr>
+                          <tr>
+                            <th><i class="fas fa-stethoscope"></i></th>
+                            <th>Hospital</th>
+                            <th>8</th>
+                            <th>50 mi</th>
+                          </tr>
+                          <tr>
+                            <th><i class="fas fa-church"></i></th>
+                            <th>Church</th>
+                            <th>15</th>
+                            <th>50 mi</th>
+                          </tr>
+                    </tbody>
+                    </table>
+
+              </article>
+
+              </div>
+
+        <div class="column is-4">
+        <article class="panel is-info">
+
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr class="is-selected">
+                        <th>Georgetown, TX, USA</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                    <th>Icon</th>
+                    <th>Place</th>
+                    <th>Count</th>
+                    <th>Mile Radius</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><i class="fas fa-school"></i></th>
+                        <th>School</th>
+                        <th>5</th>
+                        <th>50 mi</th>
+                    </tr>
+                    <tr>
+                        <th><i class="fas fa-shopping-cart"></i></th>
+                        <th>Grocery Store</th>
+                        <th>10</th>
+                        <th>50 mi</th>
+                        </tr>
+                        <tr>
+                        <th><i class="fas fa-stethoscope"></i></th>
+                        <th>Hospital</th>
+                        <th>2</th>
+                        <th>50 mi</th>
+                        </tr>
+                        <tr>
+                        <th><i class="fas fa-church"></i></th>
+                        <th>Church</th>
+                        <th>4</th>
+                        <th>50 mi</th>
+                        </tr>
+                </tbody>
+                </table>
+
+            </article>
+
+            </div>
+      </div>
+
+      <!-- Start 2 sides page layout -->
+      <!-- Google maps -->
+      <div class="columns">
+        <!--map section - LEFT SIDE-->
+        <div class="column is-4 is-offset-2">
+          <!--  Start embedded map. -->
+          <div id="map"></div>
+          <ul id="places"></ul>
+          <br />
+          <p class="is-fullwidth" id="sh-title">Search History</p>
+
+          <button id="clear">Clear Search History</button>
+
+          <div id="buttonsContainer"></div>
         </div>
 
-        <!-- Start 2 sides page layout -->
-        <!-- Google maps -->
-        <div class="columns">
+        <div id="more"></div>
+        <!-- End embedded map. -->
 
-            <!--map section - LEFT SIDE-->
-            <div class="column is-4 is-offset-2">
-                <!--  Start embedded map. -->
-                <div id="map"></div>
-                <ul id="places"></ul>
-                <br />
-                <p class="is-fullwidth" id="sh-title">Search History</p>
-
-                <button id="clear">Clear Search History</button>
-
-                <div id="buttonsContainer">
-                </div>
-            </div>
-
-                <div id="more"></div>
-                <!-- End embedded map. -->
-            
-
-
-            <!--Populated list section- RIGHT SIDE-->
-            <div class="column is-5">
-                <ul id="places-list"></ul>
-            </div>
-            <div class="column is-2"></div>
-    </div>
+        <!--Populated list section- RIGHT SIDE-->
+        <div class="column is-5">
+          <ul id="places-list"></ul>
+        </div>
+        <div class="column is-2"></div>
+      </div>
     </main>
     <!-- End main -->
 
@@ -98,34 +222,31 @@
 
     <!-- alert popup -->
     <div id="alert" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <h2>Alert! Alert!</h2>
-            <!-- Any other Bulma elements you want -->
-            <button class="modal-close is-medium" aria-label="close"></button>
-        </div>
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <h2>Alert! Alert!</h2>
+        <!-- Any other Bulma elements you want -->
+        <button class="modal-close is-medium" aria-label="close"></button>
+      </div>
     </div>
 
     <!-- general -->
     <div id="general" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <h2>Alert! Alert!</h2>
-            <!-- Any other Bulma elements you want -->
-            <button class="modal-close is-medium" aria-label="close"></button>
-        </div>
-
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <h2>Alert! Alert!</h2>
+        <!-- Any other Bulma elements you want -->
+        <button class="modal-close is-medium" aria-label="close"></button>
+      </div>
     </div>
 
     <!-- End modal -->
 
     <!-- Start footer -->
     <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <span>life</span>Finder <span id="team"> by TEAM 2.</span>
-            </p>
-        </div>
+      <div class="content has-text-centered">
+        <p><span>life</span>Finder <span id="team"> by TEAM 2.</span></p>
+      </div>
     </footer>
     <!-- End footer -->
 
@@ -134,7 +255,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQgwtmt7aoZSZHJo2BT50rx2nqbZb8Tw&libraries=places&v=weekly&map_ids=8d193001f940fde3"></script>
 
     <script src="./assets/js/script.js"></script>
-
-</body>
-
+  </body>
 </html>

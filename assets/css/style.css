@@ -14,6 +14,7 @@
     align-items: center;
     justify-content: right;
     background-color: rgb(236, 236, 236);
+    margin: 0 15vw
 }
 
 #logo {
@@ -88,6 +89,9 @@
 /* End modal */
 
 /* start footer */
+.footer {
+    margin: 0 15vw
+}
 
 .footer p {
     font-size: 1.1rem;
