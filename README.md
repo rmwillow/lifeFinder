@@ -5,18 +5,9 @@
 <br />
 <br />
 
-![Life Finder to go](https://user-images.githubusercontent.com/52016382/122820942-d3ce1c80-d2a1-11eb-8731-466b83100dff.gif)
+https://user-images.githubusercontent.com/52016382/123327805-6c61d800-d500-11eb-9365-3152bc513eee.mp4
 
 
-______________________________________________________________________
-> **The web site holds previous cities you searched.**
-
-<br />
-
-![local storage on chrome ](https://user-images.githubusercontent.com/52016382/122845283-f58eca00-d2c8-11eb-8464-65e3a5445580.jpg)
-
-
-<br />
 <br />
  ____________________________________________________________________________
 
