@@ -92,6 +92,7 @@ function cityButtons(addressSearch) {
       let fullAddress = data.results[0].formatted_address;
       // Create a iterable that will select the <div> where the city will be displayed
       let responseContainerEl = document.getElementById("buttonsContainer");
+      let buttonContainer = document.createElement("div")
       let addressBtn = document.createElement("BUTTON");
       addressBtn.setAttribute("src", fullAddress);
       addressBtn.textContent = fullAddress;
@@ -100,8 +101,8 @@ function cityButtons(addressSearch) {
       addressBtn.style = "margin: 10px; justify-content: center;";
       // Append to the button
       //document.body.appendChild(addressBtn);
-      responseContainerEl.append(addressBtn);
-
+      responseContainerEl.append(buttonContainer);
+      buttonContainer.append(addressBtn)
       //local storage
       //create a list to store lat and long in
       //push lat and long variables into list
@@ -126,6 +127,118 @@ function cityButtons(addressSearch) {
             searchLng = userInputLng;
             initMap();
           });
+
+          var showDataTable = function () {
+            var dataTable = document.createElement("table");
+            dataTable.classList = ("table is-fullwidth");
+            dataTable.setAttribute("id", addressSearch)
+            buttonContainer.append(dataTable);
+            var dataThead = document.createElement("thead");
+            var dataTbody = document.createElement("tbody")
+            dataTable.append(dataThead, dataTbody);
+
+            var dataTr = document.createElement("tr");
+            dataThead.append(dataTr);
+            dataThIcon = document.createElement("th");
+            dataThIcon.innerHTML = ("Icon")
+            dataThPlace = document.createElement("th");
+            dataThPlace.innerHTML = ("Place")
+            dataThCount = document.createElement("th");
+            dataThCount.innerHTML = ("Count")
+            dataThMile = document.createElement("th");
+            dataThMile.innerHTML = ("Mile Radius");
+            
+            dataTr.append(dataThIcon, dataThPlace, dataThCount, dataThMile)
+
+            // row 1
+            var dataTrRow1 = document.createElement("tr")
+            dataTbody.append(dataTrRow1)
+            var dataThSchoolIcon = document.createElement("th")
+            dataTrRow1.append(dataThSchoolIcon)
+            var schoolIcon = document.createElement("i")
+            schoolIcon.classList = "fas fa-school"
+            dataThSchoolIcon.append(schoolIcon)
+
+            var schoolTitle = document.createElement("th")
+            schoolTitle.innerHTML = "School";
+
+            var schoolCount = document.createElement("th")
+            schoolCount.innerHTML = "5"
+           
+            var schoolRadius = document.createElement("th")
+            schoolRadius.innerHTML = "10 mi"
+
+            dataTrRow1.append(schoolTitle, schoolCount, schoolRadius)
+
+            // row 2
+            var dataTrRow2 = document.createElement("tr")
+            dataTbody.append(dataTrRow2)
+            var dataGroceryIcon = document.createElement("th")
+            dataTrRow2.append(dataGroceryIcon)
+            var groceryIcon = document.createElement("i")
+            groceryIcon.classList = "fas fa-shopping-cart"
+            dataGroceryIcon.append(groceryIcon)
+
+            var groceryTitle = document.createElement("th")
+            groceryTitle.innerHTML = "Grocery Store";
+            
+            var groceryCount = document.createElement("th")
+            groceryCount.innerHTML = "5"
+           
+            var groceryRadius = document.createElement("th")
+            groceryRadius.innerHTML = "10 mi"
+
+            dataTrRow2.append(groceryTitle, groceryCount, groceryRadius)
+            
+            //row 3
+            var dataTrRow3 = document.createElement("tr")
+            dataTbody.append(dataTrRow3)
+            var dataHospitalIcon = document.createElement("th")
+            dataTrRow3.append(dataHospitalIcon)
+            var hospitalIcon = document.createElement("i")
+            hospitalIcon.classList = "fas fa-stethoscope"
+            dataHospitalIcon.append(hospitalIcon)
+
+            var hospitalTitle = document.createElement("th")
+            hospitalTitle.innerHTML = "Hospital";
+
+            var hospitalCount = document.createElement("th")
+            hospitalCount.innerHTML = "5"
+           
+            var hospitalRadius = document.createElement("th")
+            hospitalRadius.innerHTML = "10 mi"
+
+            dataTrRow3.append(hospitalTitle, hospitalCount, hospitalRadius)
+
+            //row 4
+            var dataTrRow4 = document.createElement("tr")
+            dataTbody.append(dataTrRow4)
+            var dataChurchIcon = document.createElement("th")
+            dataTrRow4.append(dataChurchIcon)
+            var churchIcon = document.createElement("i")
+            churchIcon.classList = "fas fa-church"
+            dataChurchIcon.append(churchIcon)
+
+            var churchTitle = document.createElement("th")
+            churchTitle.innerHTML = "Church";
+            
+            var churchCount = document.createElement("th")
+            churchCount.innerHTML = "5"
+           
+            var churchRadius = document.createElement("th")
+            churchRadius.innerHTML = "10 mi"
+
+            dataTrRow4.append(churchTitle, churchCount, churchRadius)
+            
+            }
+
+          if (document.getElementById(addressSearch)) {
+            document.getElementById(addressSearch).remove()
+            
+          }
+          else {
+            showDataTable();
+        }
       };
     });
 }
@@ -202,6 +315,7 @@ function getSchools() {
   document.getElementById("places-list").innerHTML = "";
   searchWord = "school";
   initMap();
+  console.log()
 }
 //function to run user button click data into variables and displays on page for hospitals in a list
 function getHospitals() {
@@ -222,16 +336,6 @@ function initMap() {
   });
   // Create the places service.
   const service = new google.maps.places.PlacesService(map);
-  let getNextPage;
-  const moreButton = document.getElementById("more");
-
-  moreButton.onclick = function () {
-    moreButton.disabled = true;
-
-    if (getNextPage) {
-      getNextPage();
-    }
-  };
 
   // Perform a nearby search.
   service.nearbySearch(
@@ -239,20 +343,11 @@ function initMap() {
     (results, status, pagination) => {
       if (status !== "OK" || !results) return;
       addPlaces(results, map);
-      moreButton.disabled = !pagination || !pagination.hasNextPage;
-
-      if (pagination && pagination.hasNextPage) {
-        getNextPage = () => {
-          // Note: nextPage will call the same handler function as the initial call
-          pagination.nextPage();
-        };
-      }
     }
   );
 }
 
 function addPlaces(places, map) {
-  const placesList = document.getElementById("list-container");
   const placesDisplay = document.getElementById("places-list");
   for (const place of places) {
     if (place.geometry && place.geometry.location) {
